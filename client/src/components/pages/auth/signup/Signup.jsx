@@ -12,7 +12,8 @@ class Signup extends Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            email:''
         }
         this.services = new AuthServices()
     }
@@ -26,8 +27,9 @@ class Signup extends Component {
     postUser = () => {
         this.services.signup(this.state)
             .then(theLoggedNewUser => {
-                this.setState({ username: '', password: '' })
+                this.setState({ username: '', password: '' , email:''})
                 this.props.setTheUser(theLoggedNewUser)
+                this.props.history.push('/')
             })
             .catch(err => console.log({ err }))
     }
@@ -48,12 +50,16 @@ class Signup extends Component {
 
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
-                        <Form.Label>Usuario</Form.Label>
-                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" name="email" value={this.state.email} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Contraseña</Form.Label>
                         <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Usuario</Form.Label>
+                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
                     </Form.Group>
 
                     <Button variant="dark" type="submit">Registrarse</Button>

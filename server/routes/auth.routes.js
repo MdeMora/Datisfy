@@ -47,6 +47,8 @@ authRoutes.post('/signup', (req, res, next) => {
             username: username
         });
 
+        console.log(aNewUser)
+
         aNewUser.save(err => {
             if (err) {
                 res.status(400).json({ message: 'Saving user to database went wrong.' });
@@ -69,10 +71,6 @@ authRoutes.post('/signup', (req, res, next) => {
         });
     });
 });
-
-
-
-
 
 
 authRoutes.post('/login', (req, res, next) => {
@@ -114,6 +112,7 @@ authRoutes.post('/logout', (req, res, next) => {
 authRoutes.get('/loggedin', (req, res, next) => {
     // req.isAuthenticated() is defined by passport
     if (req.isAuthenticated()) {
+        console.log("--Esto es lo que hay en req.user",req.user)
         res.status(200).json(req.user);
         return;
     }

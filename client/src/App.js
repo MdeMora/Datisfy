@@ -8,6 +8,10 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Signup from './components/pages/auth/signup/Signup'
 import Profile from './components/pages/profile/Profile'
 import Login from './components/pages/auth/login/Login'
+import StatsIndex from './components/pages/stats/StatsIndex'
+
+import NavBar from './components/ui/Navbar'
+
 
 import AuthServices from './services/auth.services'
 
@@ -34,13 +38,14 @@ class App extends Component {
 
     return (
       <>
-        {/* <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} /> */}
+        {<NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />}
 
         <Switch>
-          <Route exact path="/" render={() => <><h1>Hoola index</h1> <a href="/login">login</a><a href="/signup">signup</a></>} />
-          <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
+          <Route exact path="/" render={() => <h1>did u just uWu me???</h1>} />
+          <Route path="/signup" render={(props) => <Signup setTheUser={this.setTheUser}{...props} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
+          <Route path="/charts" render={() => <StatsIndex />}/>
         </Switch>
       </>
 

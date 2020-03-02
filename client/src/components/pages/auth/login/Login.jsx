@@ -49,7 +49,7 @@ class Login extends Component {
 
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
-                        <Form.Label>Usuario</Form.Label>
+                        <Form.Label>Email</Form.Label>
                         <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>
