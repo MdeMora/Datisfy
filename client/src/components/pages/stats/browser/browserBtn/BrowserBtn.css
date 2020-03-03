@@ -1,0 +1,9 @@
+.browserBtn{
+    border: 1px solid black;
+
+}
+
+.browserBtn:hover{
+    background-color: aquamarine;
+    
+}

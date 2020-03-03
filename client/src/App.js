@@ -47,6 +47,7 @@ class App extends Component {
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
           <Route path="/charts" render={() => <StatsIndex />}/>
         </Switch>
+        
       </>
 
     )

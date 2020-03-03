@@ -16,6 +16,7 @@ require('./configs/session.config')(app)
 
 // Base URLS
 app.use('/api/auth', require('./routes/auth.routes'))
+app.use('/api/spotify', require('./routes/spotify.routes'))
 
 
 module.exports = app

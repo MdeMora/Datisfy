@@ -13,14 +13,19 @@ class StatsIndex extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selectedSearch:""
+            inputSearch:"",
+            selected:""
         }
         this.services = new ChartServices()
 
     }
     
-    chosenSearch = (selectedSearch) =>{
+    setSearch = (selectedSearch) =>{
         this.setState({selectedSearch:selectedSearch})
+    }
+    setSelected = (selected) => {
+        //TODO Verificar el tipo de lo que sea ya actualizar
+        console.log("NO Estoy funcionando")
     }
 
 
@@ -30,7 +35,7 @@ class StatsIndex extends Component {
             <Container>
                 <Row>
                     <Col>
-                        <Browser/>
+                        <Browser setSearch={this.setSearch} setSelected={this.setSelected}/>
                     </Col>
                     <Col>
                         <Charter/>
