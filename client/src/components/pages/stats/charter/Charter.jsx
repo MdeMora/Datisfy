@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 import Container from 'react-bootstrap/Container'
 
-import ChartServices from '../../../../services/chart.services'
-
 class Charter extends Component {
 
     constructor(props) {
@@ -11,7 +9,6 @@ class Charter extends Component {
         this.state = {
             selectedSearch:""
         }
-        this.services = new ChartServices()
     }
 
 

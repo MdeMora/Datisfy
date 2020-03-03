@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import SelectionCard from './selectedCard/SelectionCard';
 
 
@@ -7,19 +8,25 @@ class ProductTable extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selected:""
+            selected:[],
+            selectionItems:this.props.selectionItems
             
         }
     }
-    componentDidUpdate(){
-        // console.log(this.props, this.state.filteredProducts)
+
+    componentDidUpdate(prevProps) {
+        // Uso tipico (no olvides de comparar los props):
+        if (this.props.selectionItems !== prevProps.selectionItems) { 
+          this.setState({
+            selectionItems:this.props.selectionItems
+            });
+        }
     }
+
     render() {
         
-        return(
-            
-            <div>Un panel</div>
-        )
+        return this.state.selectionItems.map(elm => <SelectionCard {...elm}/>)
+         
     }
 }
 

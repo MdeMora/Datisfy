@@ -1,0 +1,26 @@
+.spotcard{
+    margin: 2px 0px;
+    border: 1px solid black;
+}
+
+.spotcard:hover{
+    background-color: aquamarine;
+}
+
+.spotcard img{
+    width: 4em;
+}
+
+.spotcard h1{
+    font-size: 16px;
+}
+
+.spotcard p{
+    font-size: 10px;
+}
+
+.spotcard-body{
+    padding-top:15px;
+    padding-left: 10px;
+}
+

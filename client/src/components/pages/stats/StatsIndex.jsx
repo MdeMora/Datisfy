@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import ChartServices from '../../../services/chart.services'
 import Browser from './browser/Browser'
 import Charter from './charter/Charter'
 
@@ -16,7 +15,6 @@ class StatsIndex extends Component {
             inputSearch:"",
             selected:""
         }
-        this.services = new ChartServices()
 
     }
     

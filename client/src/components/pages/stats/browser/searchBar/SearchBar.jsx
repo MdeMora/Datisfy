@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import Form from 'react-bootstrap/Form'
 
+import SearchServices from "../../../../../services/search.services";
+
+
 import './SearchBar.css'
 
 class SearchBar extends Component {
@@ -10,14 +13,17 @@ class SearchBar extends Component {
         super(props)
         this.state = {
             input:"",
-            selectedTerm:this.props.selectedTerm
+            selectedTerm:this.props.selectedTerm,
+            selectionItems:[]
         }
         console.log('Props the Search Bar',this.props)
         this.filterItems=this.props.filterItems
+        this.services=new SearchServices()
     }
+
     componentDidUpdate(prevProps) {
         // Uso tipico (no olvides de comparar los props):
-        if (this.props.selectedTerm !== prevProps.selectedTerm) {
+        if (this.props.selectedTerm !== prevProps.selectedTerm) { 
           this.setState({
               selectedTerm:this.props.selectedTerm
             });
@@ -29,8 +35,7 @@ class SearchBar extends Component {
         
         this.setState({
             input: value
-        })
-        // }, () => this.filterItems(this.state.input))
+        },() => this.filterItems(this.state.input))
     }
 
 
