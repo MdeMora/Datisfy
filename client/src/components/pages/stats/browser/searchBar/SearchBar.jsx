@@ -16,7 +16,6 @@ class SearchBar extends Component {
             selectedTerm:this.props.selectedTerm,
             selectionItems:[]
         }
-        console.log('Props the Search Bar',this.props)
         this.filterItems=this.props.filterItems
         this.services=new SearchServices()
     }
@@ -28,7 +27,7 @@ class SearchBar extends Component {
               selectedTerm:this.props.selectedTerm
             });
         }
-      }
+    }
 
     handleChange = e => {
         let {value} = e.target
@@ -51,7 +50,10 @@ class SearchBar extends Component {
                     placeholder={`Search for ${this.state.selectedTerm}`}
                     value={this.state.input} 
                     onChange={this.handleChange}
+                    className="search-txt"
+                    autoComplete="off"
                     />
+                    <i className="fas fa-search"></i>
                 </Form.Group>
             </Form>
 

@@ -7,13 +7,15 @@ import Col from 'react-bootstrap/Col'
 import Browser from './browser/Browser'
 import Charter from './charter/Charter'
 
+import './StatsIndex.css'
+
 class StatsIndex extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
             inputSearch:"",
-            selected:""
+            selectedObjs:[]
         }
 
     }
@@ -21,22 +23,29 @@ class StatsIndex extends Component {
     setSearch = (selectedSearch) =>{
         this.setState({selectedSearch:selectedSearch})
     }
-    setSelected = (selected) => {
-        //TODO Verificar el tipo de lo que sea ya actualizar
-        console.log("NO Estoy funcionando")
-    }
 
+    setSelected = (selected,reset) => {
+
+        if(!reset){
+            let selectedObjsCopy = [...this.state.selectedObjs]
+            selectedObjsCopy.push(selected)
+            this.setState({selectedObjs:selectedObjsCopy})
+        }else{
+            this.setState({selectedObjs:[]})
+        }
+        
+    }
 
     render() {
 
         return (
-            <Container>
+            <Container className="statIndex">
                 <Row>
                     <Col>
                         <Browser setSearch={this.setSearch} setSelected={this.setSelected}/>
                     </Col>
                     <Col>
-                        <Charter/>
+                        <Charter selectedObjs={this.state.selectedObjs}/>
                     </Col>
                 </Row>
             </Container>

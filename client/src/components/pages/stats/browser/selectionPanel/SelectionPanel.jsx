@@ -10,8 +10,8 @@ class ProductTable extends Component {
         this.state = {
             selected:[],
             selectionItems:this.props.selectionItems
-            
         }
+        this.setSelected=this.props.setSelected
     }
 
     componentDidUpdate(prevProps) {
@@ -24,8 +24,8 @@ class ProductTable extends Component {
     }
 
     render() {
-        
-        return this.state.selectionItems.map(elm => <SelectionCard {...elm}/>)
+
+        return this.state.selectionItems.map(elm => <SelectionCard {...elm} setSelected={this.setSelected} />)
          
     }
 }

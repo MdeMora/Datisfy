@@ -1,9 +1,10 @@
 .browserBtn{
-    border: 1px solid black;
+    border-bottom: 1px solid #535353;
+    margin:100px 0px;
+    font-size: 30px;
 
 }
 
 .browserBtn:hover{
-    background-color: aquamarine;
-    
+    background-color: #535353;  
 }

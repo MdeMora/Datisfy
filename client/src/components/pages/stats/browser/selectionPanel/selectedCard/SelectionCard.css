@@ -1,6 +1,6 @@
 .spotcard{
-    margin: 2px 0px;
-    border: 1px solid black;
+    margin: 5px 0px;
+    border-bottom: 1px solid #535353;
 }
 
 .spotcard:hover{
@@ -21,6 +21,13 @@
 
 .spotcard-body{
     padding-top:15px;
+    
     padding-left: 10px;
 }
+
+.artistImg{
+    border-radius: 0% 100% 100% 0% / 0% 50% 50% 100% ;
+}
+
+
 

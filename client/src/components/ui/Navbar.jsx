@@ -5,6 +5,8 @@ import Nav from 'react-bootstrap/Nav'
 
 import AuthServices from '../../services/auth.services'
 
+import './Navbar.css'
+
 import { Link } from 'react-router-dom'
 
 class Navigation extends Component {
@@ -34,8 +36,8 @@ class Navigation extends Component {
 
             this.props.loggedInUser ?
                 (
-                    <Navbar bg="dark" expand="lg" variant="dark">
-                        <Navbar.Brand href="#home">dev Nav!</Navbar.Brand>
+                    <Navbar className="spotNav" expand="lg" variant="dark">
+                        <Navbar.Brand href="/">dev Nav!</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
@@ -50,8 +52,8 @@ class Navigation extends Component {
                 )
                 :
                 (
-                    <Navbar bg="dark" expand="lg" variant="dark">
-                        <Navbar.Brand href="#home">CoastersApp!</Navbar.Brand>
+                    <Navbar className="spotNav" expand="lg" variant="dark">
+                        <Navbar.Brand href="#home">dev Nav!</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">

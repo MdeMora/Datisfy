@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import SearchBar from "./searchBar/SearchBar";
 import BrowserBtn from "./browserBtn/BrowserBtn";
 import SelectionPanel from "./selectionPanel/SelectionPanel";
+import { Link } from 'react-router-dom'
 
 import "./Browser.css";
 
@@ -19,11 +20,17 @@ class Browser extends Component {
       hide: false
     };
     this.services = new SearchServices();
+    this.setSelected = this.props.setSelected
   }
 
   click = input => {
     this.setState({ selectedTerm: input });
   };
+
+  reset = () =>{
+    this.setSelected({},true) // El true activa el reset
+    this.setState({ hide: false,selectedTerm:"",selectionItems:[]})
+  }
 
   filterItems = input => {
 
@@ -37,20 +44,18 @@ class Browser extends Component {
                   this.setState({selectionItems:result.tracks.items})
               })
           break;
+      case "artist":
+        this.services.artist({searchInput:input})
+                  .then(result =>{
+                  console.log(result.artists.items)
+                  this.setState({selectionItems:result.artists.items})
+              })
+        break;
   
       default:
           console.log("default switch case")
           break;
     }
-
-    // let selectionItemsCopy = [...this.state.selectionItems];
-
-    // selectionItemsCopy.data.filter(elm => elm.name.toLowerCase().includes(input))
-
-    // this.setState({
-    //   selectionItems: selectionItemsCopy
-    // });
-
   };
 
   render() {
@@ -68,41 +73,22 @@ class Browser extends Component {
 
           {!this.state.hide ? (
             <div className="container">
-              <div className="row">
-                <div className="col-4">
+              
+                
                   <div onClick={() => this.setState({ hide: true })}>
                     <BrowserBtn name="track" click={this.click} />
                   </div>
-                </div>
-                <div className="col-4">
-                  <div onClick={() => this.setState({ hide: true })}>
-                    <BrowserBtn name="album" click={this.click} />
-                  </div>
-                </div>
-                <div className="col-4">
+                
                   <div onClick={() => this.setState({ hide: true })}>
                     <BrowserBtn name="artist" click={this.click} />
                   </div>
-                </div>
-                <div className="col-4">
-                  <div onClick={() => this.setState({ hide: true })}>
-                    <BrowserBtn name="tracks" click={this.click} />
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div onClick={() => this.setState({ hide: true })}>
-                    <BrowserBtn name="albums" click={this.click} />
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div onClick={() => this.setState({ hide: true })}>
-                    <BrowserBtn name="artists" click={this.click} />
-                  </div>
-                </div>
-              </div>
+              
             </div>
           ) : (
-              <SelectionPanel selectionItems={this.state.selectionItems}/>
+              <>
+              <SelectionPanel selectionItems={this.state.selectionItems} setSelected={this.setSelected}/>
+              <Link className="backBtn" to="/charts" onClick={this.reset}>Go Back</Link>
+              </>
             )}
         </div>
 
