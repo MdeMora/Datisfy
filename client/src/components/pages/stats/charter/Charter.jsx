@@ -34,9 +34,7 @@ class Charter extends Component {
         if(prevState.selectedObjs.length!==arrIdCopy.length){
             this.setState({
                 arrID:arrIdCopy
-            })
-            
-            this.services.audioFeatures(this.state.arrID)
+            },()=>this.services.audioFeatures(this.state.arrID))
         }
 
         

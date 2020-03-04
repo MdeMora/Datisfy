@@ -25,11 +25,7 @@ class SelectionCard extends Component{
 
         !this.state.isSelected && this.setSelected(this.props)
 
-        // !this.state.isSelected ? this.setSelected(this.props) : null
-        // if(!this.state.isSelected){
-        //     this.setSelected(this.props)
-        // }
-        
+        // TODO Arreglas cards, pos 0 click se queda seleccionada
     }
 
     toggleHover= () => this.setState({hover: !this.state.hover})
