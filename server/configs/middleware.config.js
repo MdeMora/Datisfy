@@ -29,7 +29,7 @@ module.exports = app => {
 
 
 
-    const whitelist = ['http://localhost:3000']
+    const whitelist = ['http://localhost:3000','https://datisfy.herokuapp.com/']
     const corsOptions = {
         origin: (origin, cb) => {
             const originWhitelisted = whitelist.includes(origin)
