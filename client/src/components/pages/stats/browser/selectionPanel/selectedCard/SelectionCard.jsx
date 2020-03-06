@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import './SelectionCard.css'
 
-// class ProductTable extends Component
+
 
 class SelectionCard extends Component{
 

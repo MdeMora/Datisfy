@@ -15,7 +15,8 @@ class StatsIndex extends Component {
         super(props)
         this.state = {
             inputSearch:"",
-            selectedObjs:[]
+            selectedObjs:[],
+            selectedTerm:""
         }
 
     }
@@ -34,18 +35,21 @@ class StatsIndex extends Component {
             this.setState({selectedObjs:[]})
         }
         
-    }
+    }//german
 
+    setIndexTerm = input => {
+        this.setState({ selectedTerm: input });
+    }
     render() {
 
         return (
             <Container className="statIndex">
                 <Row>
                     <Col>
-                        <Browser setSearch={this.setSearch} setSelected={this.setSelected}/>
+                        <Browser setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm}/>
                     </Col>
                     <Col>
-                        <Charter selectedObjs={this.state.selectedObjs}/>
+                        <Charter selectedObjs={this.state.selectedObjs} selectedTerm={this.state.selectedTerm}/>
                     </Col>
                 </Row>
             </Container>

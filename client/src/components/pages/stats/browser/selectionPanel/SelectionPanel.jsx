@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SelectionCard from './selectedCard/SelectionCard';
 
 
-class ProductTable extends Component {
+class SelectionPanel extends Component {
 
     constructor(props) {
         super(props)
@@ -30,4 +30,4 @@ class ProductTable extends Component {
     }
 }
 
-export default ProductTable
+export default SelectionPanel

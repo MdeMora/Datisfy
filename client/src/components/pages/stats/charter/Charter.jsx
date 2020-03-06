@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 
-import Container from 'react-bootstrap/Container'
 import SearchServices from "../../../../services/search.services";
+import ChartSelectionModal from './chartSelectionModal/ChartSelectionModal'
+
+import './cssAnimation.css'
+
 
 
 class Charter extends Component {
@@ -11,7 +14,10 @@ class Charter extends Component {
         this.state = {
             selectedObjs: this.props.selectedObjs,
             audioFeatures : [],
-            arrID:[]
+            arrID:[],
+            selectedTerm:this.props.selectedTerm,
+            selectedChart:"",
+            hide: false
         }
         this.services = new SearchServices()
     }
@@ -28,27 +34,67 @@ class Charter extends Component {
             });
         }
 
+        if (this.props.selectedTerm !== prevProps.selectedTerm) { 
+            this.setState({
+                selectedTerm:this.props.selectedTerm
+              });
+          }
+
         let selectedObjsCopy = [...this.state.selectedObjs],arrIdCopy=[]
+        
         selectedObjsCopy.forEach((elm)=>arrIdCopy.push(elm.id))
         
         if(prevState.selectedObjs.length!==arrIdCopy.length){
             this.setState({
                 arrID:arrIdCopy
-            },()=>this.services.audioFeatures(this.state.arrID))
+            },async ()=> {
+                let audioFeaturesAsync = await this.services.audioFeatures(this.state.arrID)
+                this.setState({audioFeatures:audioFeaturesAsync})
+            })
         }
 
+        // Preguntar a german sobre async y await
         
+    }
+
+
+    click = input => {
+        
+        this.setState({ selectedChart: input });
+    
+    };
+
+    reset = () =>{
+        this.setState({ hide: false,selectedChart:""})
     }
 
 
     render() {
 
+
+
         return (
-            <Container>
-               Soy el Charter y ahora solo funciono para radar tracks
+            <article>
+                <div className="d-flex flex-column">
+                {this.state.selectedTerm === "" ? (
+                        
+                    
+                    <div class="spinner-box">
 
+                        <div class="blue-orbit leo"></div>
+                        <div class="green-orbit leo"></div>
+                        <div class="red-orbit leo"></div>
+                        <div class="white-orbit w1 leo"></div>
+                        <div class="white-orbit w2 leo"></div>
+                        <div class="white-orbit w3 leo"></div>
 
-            </Container>
+                    </div>
+                ):(
+                    <ChartSelectionModal selectedTerm={this.state.selectedTerm} audioFeatures={this.state.audioFeatures}/>
+                )}
+                    
+                </div>
+            </article>
         )
     }
 }

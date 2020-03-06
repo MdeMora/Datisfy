@@ -11,7 +11,7 @@ export default class Services {
 
     track = (searchInput) => this.service.post('/searchTracks',searchInput).then(response => response.data)
     artist =(searchInput) => this.service.post('/searchArtists', searchInput).then(response => response.data)
-    audioFeatures = (arrId) => this.service.post('/audioFeatures',arrId).then(response => console.log("............................................",response.data))
+    audioFeatures = (arrId) => this.service.post('/audioFeatures',arrId).then(response => response.data)
 
     
 

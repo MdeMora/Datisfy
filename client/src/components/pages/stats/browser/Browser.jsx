@@ -7,7 +7,7 @@ import BrowserBtn from "./browserBtn/BrowserBtn";
 import SelectionPanel from "./selectionPanel/SelectionPanel";
 import { Link } from 'react-router-dom'
 
-import "./Browser.css";
+import "./Browser.css"; 
 
 import SearchServices from "../../../../services/search.services";
 
@@ -24,32 +24,31 @@ class Browser extends Component {
   }
 
   click = input => {
+    this.props.setIndexTerm(input)
     this.setState({ selectedTerm: input });
+
   };
 
   reset = () =>{
+    this.props.setIndexTerm("")
     this.setSelected({},true) // El true activa el reset
     this.setState({ hide: false,selectedTerm:"",selectionItems:[]})
   }
 
-  filterItems = input => {
+  resetSelection = () =>{
+    this.setSelected({},true) // El true activa el reset
+  }
 
-    console.log("Estoy enganchado y este es el input",input)
+  filterItems = input => {
 
     switch (this.state.selectedTerm) {
       case "track":
           this.services.track({searchInput:input})
-              .then(result =>{
-                  console.log(result.tracks.items)
-                  this.setState({selectionItems:result.tracks.items})
-              })
+              .then(result =>this.setState({selectionItems:result.tracks.items}))
           break;
       case "artist":
         this.services.artist({searchInput:input})
-                  .then(result =>{
-                  console.log(result.artists.items)
-                  this.setState({selectionItems:result.artists.items})
-              })
+                  .then(result => this.setState({selectionItems:result.artists.items}))
         break;
   
       default:
@@ -88,6 +87,8 @@ class Browser extends Component {
               <>
               <SelectionPanel selectionItems={this.state.selectionItems} setSelected={this.setSelected}/>
               <Link className="backBtn" to="/charts" onClick={this.reset}>Go Back</Link>
+              <Link className="backBtn" to="/charts" onClick={this.resetSelection}>Reset</Link>
+              
               </>
             )}
         </div>

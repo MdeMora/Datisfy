@@ -18,33 +18,31 @@ router.post('/searchTracks', (req, res, next) => {
 
   spotifyApi.searchTracks(req.body.searchInput,{limit:5})
     .then( trackData => res.status(200).json(trackData.body), err => console.error(err))   
-
   })
 
 
 router.post('/searchArtists', (req,res,next)=>{
 
   spotifyApi.searchArtists(req.body.searchInput,{limit:5})
-    .then( artistData=> res.status(200).json(artistData.body), err=> console.error(err))
+    .then( artistData => res.status(200).json(artistData.body))
+    .catch(err => console.error(err))
 
 })
 
 
 router.post('/audioFeatures',(req,res,next)=>{
 
-  console.log("------ PAYLOAD EN DESTINO -----", req.body)
 
   arrId=[...req.body]
-  console.log(req.body)
-  resArr = []
+  promiseArr = []
 
-  arrId.forEach(elm => {
-    spotifyApi.getAudioFeaturesForTrack(elm)
-      .then(data => resArr.push(data), err => console.error(err))
-      .then(() => {res.status(200).json(resArr)} )
-  })
+  arrId.forEach(elm => promiseArr.push( spotifyApi.getAudioFeaturesForTrack(elm) ))
 
-  
+  Promise.all(promiseArr)
+    .then(result => res.json(result))
+    .catch(err => console.log(err))
+
+
 })
 
   module.exports = router;
