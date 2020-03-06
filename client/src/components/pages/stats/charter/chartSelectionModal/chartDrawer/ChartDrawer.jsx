@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Radar from '../../charts/Radar'
+import TrackLine from '../../charts/TrackLine'
+import FollowerLine from '../../charts/FollowerLine'
 import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 
@@ -31,16 +33,32 @@ class ChartDrawer extends Component {
                     </>
                 )
                 
-            case "Bar":
-                return <h1>Soy el bar</h1>
+            case "Popularity":
+                return (
+                    <>
+                    <Container>
+                        <div style={{height:"500px"}}>
+                                <TrackLine data={this.props.selectedObjs}/>
+                        </div>
+                    </Container>
+                    <Link className="backBtn" to="/charts" onClick={this.props.reset} >Go Back</Link>
+                    </>
+                )
                 
-            case "A1":
-                return <h1>Soy el bar</h1>
-                
-            case "A2":
-                return <h1>Soy el bar</h1>
+            case "Followers":
+                return (
+                    <>
+                    <Container>
+                        <div style={{height:"500px"}}>
+                                <FollowerLine data={this.props.selectedObjs}/>
+                        </div>
+                    </Container>
+                    <Link className="backBtn" to="/charts" onClick={this.props.reset} >Go Back</Link>
+                    </>
+                )
+
             default:
-                return <h1>LOLO</h1>
+                return <h1>A incorrect value was introduced to chart, contact technical service</h1>
                 
         }
     }

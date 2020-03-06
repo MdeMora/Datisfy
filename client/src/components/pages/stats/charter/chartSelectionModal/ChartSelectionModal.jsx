@@ -50,7 +50,7 @@ class ChartSelectionModal extends Component {
                         </div>
                         
                         <div onClick={() => this.setState({ hide: true, })} >
-                            <BrowserBtn name="Bar" click={this.click}/>
+                            <BrowserBtn name="Popularity" click={this.click}/>
                         </div>
                     
                     </div>
@@ -60,17 +60,17 @@ class ChartSelectionModal extends Component {
                     <div className="container">
                         
                         <div onClick={() => this.setState({ hide: true })} >
-                            <BrowserBtn name="Artist chart 1" click={this.click} />
+                            <BrowserBtn name="Followers" click={this.click} />
                         </div>
                         
                         <div onClick={() => this.setState({ hide: true, })} >
-                            <BrowserBtn name="Artist chart 2" click={this.click}/>
+                            <BrowserBtn name="Popularity" click={this.click}/>
                         </div>
                     
                     </div>
                    )
             ) : (
-                <ChartDrawer selectedChart={this.state.selectedChart} audioFeatures={this.props.audioFeatures} reset={this.reset} />
+                <ChartDrawer selectedChart={this.state.selectedChart} audioFeatures={this.props.audioFeatures} reset={this.reset} selectedObjs={this.props.selectedObjs}/>
             )
 
             

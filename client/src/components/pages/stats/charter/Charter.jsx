@@ -79,18 +79,18 @@ class Charter extends Component {
                 {this.state.selectedTerm === "" ? (
                         
                     
-                    <div class="spinner-box">
+                    <div className="spinner-box">
 
-                        <div class="blue-orbit leo"></div>
-                        <div class="green-orbit leo"></div>
-                        <div class="red-orbit leo"></div>
-                        <div class="white-orbit w1 leo"></div>
-                        <div class="white-orbit w2 leo"></div>
-                        <div class="white-orbit w3 leo"></div>
+                        <div className="blue-orbit leo"></div>
+                        <div className="green-orbit leo"></div>
+                        <div className="red-orbit leo"></div>
+                        <div className="white-orbit w1 leo"></div>
+                        <div className="white-orbit w2 leo"></div>
+                        <div className="white-orbit w3 leo"></div>
 
                     </div>
                 ):(
-                    <ChartSelectionModal selectedTerm={this.state.selectedTerm} audioFeatures={this.state.audioFeatures}/>
+                    <ChartSelectionModal selectedTerm={this.state.selectedTerm} audioFeatures={this.state.audioFeatures} selectedObjs={this.props.selectedObjs}/>
                 )}
                     
                 </div>
