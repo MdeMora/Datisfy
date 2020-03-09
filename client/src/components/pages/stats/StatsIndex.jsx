@@ -40,7 +40,7 @@ class StatsIndex extends Component {
             this.setState({selectedObjs:[],selectedIds:[]})
         }
         
-    }//german
+    }
 
     removeSelected = (id) =>{
 
@@ -71,7 +71,7 @@ class StatsIndex extends Component {
                         <Browser setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm} removeSelected={this.removeSelected} selectedIds={this.state.selectedIds}/>
                     </Col>
                     <Col>
-                        <Charter selectedObjs={this.state.selectedObjs} selectedTerm={this.state.selectedTerm}/>
+                        <Charter selectedObjs={this.state.selectedObjs} selectedTerm={this.state.selectedTerm} arrId={this.state.selectedIds}/>
                     </Col>
                 </Row>
             </Container>

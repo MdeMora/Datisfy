@@ -29,7 +29,7 @@ return(
     
     <ResponsiveLine
         data={cleanData}
-        margin={{ top: 0, right: 20, bottom: 60, left: 60 }}
+        margin={{ top: 50, right: 20, bottom: 60, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         curve="cardinal"
@@ -61,14 +61,14 @@ return(
         pointBorderColor={{ from: 'serieColor' }}
         enablePointLabel={true}
         pointLabel="y"
-        pointLabelYOffset={-14}
+        pointLabelYOffset={-20}
         enableArea={true}
         areaOpacity={0.25}
         crosshairType="top"
         useMesh={true}
         motionStiffness={30}
         motionDamping={7}
-        theme={{dots: {text: {fill: 'rgb(0,0,0)'}} ,legends:{text:{fill:'rgb(0,0,0)'}}}}
+        theme={{dots: {text: {fill: '#ffffff'}} ,legends:{text:{fill:'#ffffff'}}}}
     />
 )}
 

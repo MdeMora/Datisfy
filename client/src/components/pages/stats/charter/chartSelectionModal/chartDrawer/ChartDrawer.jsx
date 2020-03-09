@@ -25,7 +25,7 @@ class ChartDrawer extends Component {
                 return (
                     <>
                     <Container>
-                        <div style={{height:"500px"}}>
+                        <div style={{height:"400px"}}>
                                 <Radar data={this.props.audioFeatures}/>
                         </div>
                     </Container>
@@ -37,7 +37,7 @@ class ChartDrawer extends Component {
                 return (
                     <>
                     <Container>
-                        <div style={{height:"500px"}}>
+                        <div style={{height:"400px"}}>
                                 <TrackLine data={this.props.selectedObjs}/>
                         </div>
                     </Container>
@@ -49,7 +49,7 @@ class ChartDrawer extends Component {
                 return (
                     <>
                     <Container>
-                        <div style={{height:"500px"}}>
+                        <div style={{height:"400px"}}>
                                 <FollowerLine data={this.props.selectedObjs}/>
                         </div>
                     </Container>

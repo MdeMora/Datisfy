@@ -14,10 +14,10 @@ class Charter extends Component {
         this.state = {
             selectedObjs: this.props.selectedObjs,
             audioFeatures : [],
-            arrID:[],
+            arrId: this.props.arrId,
             selectedTerm:this.props.selectedTerm,
             selectedChart:"",
-            hide: false
+            hIde: false
         }
         this.searchServices = new SearchServices()
     }
@@ -27,7 +27,7 @@ class Charter extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // Uso tipico (no olvides de comparar los props):
+        // Uso tipico (no olvIdes de comparar los props):
         if (this.props.selectedObjs !== prevProps.selectedObjs) { 
           this.setState({
             selectedObjs:this.props.selectedObjs
@@ -38,20 +38,30 @@ class Charter extends Component {
             this.setState({
                 selectedTerm:this.props.selectedTerm
               });
-          }
-
-        let selectedObjsCopy = [...this.state.selectedObjs],arrIdCopy=[]
-        
-        selectedObjsCopy.forEach((elm)=>arrIdCopy.push(elm.id))
-        
-        if(prevState.selectedObjs.length!==arrIdCopy.length){
-            this.setState({
-                arrID:arrIdCopy
-            },async ()=> {
-                let audioFeaturesAsync = await this.searchServices.audioFeatures(this.state.arrID)
-                this.setState({audioFeatures:audioFeaturesAsync})
-            })
         }
+
+        if (this.props.arrId !== prevProps.arrId) { 
+            this.setState({
+                arrId:this.props.arrId
+              },async ()=> {
+                let audioFeaturesAsync = await this.searchServices.audioFeatures(this.state.arrId)
+                this.setState({audioFeatures:audioFeaturesAsync})
+            });
+        }
+
+
+        // let selectedObjsCopy = [...this.state.selectedObjs],arrIdCopy=[]
+        
+        // selectedObjsCopy.forEach((elm)=>arrIdCopy.push(elm.Id))
+        
+        // if(prevState.selectedObjs.length!==arrIdCopy.length){
+        //     this.setState({
+        //         arrId:arrIdCopy
+        //     },async ()=> {
+        //         let audioFeaturesAsync = await this.searchServices.audioFeatures(this.state.arrId)
+        //         this.setState({audioFeatures:audioFeaturesAsync})
+        //     })
+        // }
 
         // Preguntar a german sobre async y await
         
@@ -65,7 +75,7 @@ class Charter extends Component {
     };
 
     reset = () =>{
-        this.setState({ hide: false,selectedChart:""})
+        this.setState({ hIde: false,selectedChart:""})
     }
 
 

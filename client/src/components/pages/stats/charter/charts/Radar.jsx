@@ -43,7 +43,7 @@ return(
         keys={[ 'song0', 'song1', 'song2','song3','song4' ]}
         indexBy="feature"
         maxValue={100}
-        margin={{ top: 100, right: 100, bottom: 0, left: 100 }}
+        margin={{ top: 50, right: 100, bottom: 0, left: 100 }}
         curve="cardinalClosed"
         borderWidth={3}
         borderColor={{ from: 'color', modifiers: [] }}

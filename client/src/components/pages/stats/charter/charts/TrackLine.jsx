@@ -29,7 +29,7 @@ return(
     
     <ResponsiveLine
         data={cleanData}
-        margin={{ top: 0, right: 20, bottom: 60, left: 60 }}
+        margin={{ top: 50, right: 20, bottom: 60, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: '0', max: '100', stacked: true, reverse: false }}
         curve="cardinal"

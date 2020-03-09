@@ -27,11 +27,6 @@ class SelectionCard extends Component{
             arrIds:this.props.selectedIds
             });
         }
-
-        if (this.state.isSelected === prevState.isSelected) { 
-
-            
-        }
  
     }
 
@@ -61,17 +56,18 @@ class SelectionCard extends Component{
                 onClick={this.toggleIsSelected} // Esto lo hace todo
                 onMouseEnter={this.toggleHover} //Esto ok
                 onMouseLeave={this.toggleHover} //Ok
-                style={{backgroundColor: this.state.isSelected || this.state.hover ? "#535353" : "inherit"}} >
+                style={{backgroundColor: this.state.hover || this.state.arrIds.includes(this.state.cardId) ? "#535353" : "inherit"}} >
                     
                     <img src={this.props.album.images[0].url} alt="img track"></img>
                     <div className="spotcard-body">
                         <h1>{this.props.name}</h1>
                         <p>{this.props.type} - {this.props.artists[0].name} - {this.millisToMinutesAndSeconds(this.props.duration_ms)}</p>
+                    
                     </div>
                 </div>
 
             ):( //Esto de artistas NO MIRAR Y COPIAR DESPUES
-                <div className="spotcard d-flex" onClick={this.toggleIsSelected} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} style={{backgroundColor: this.state.isSelected || this.state.hover ? "#535353" : "inherit"}} >
+                <div className="spotcard d-flex" onClick={this.toggleIsSelected} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} style={{backgroundColor: this.state.isSelected || this.state.hover || this.state.arrIds.includes(this.state.cardId) ? "#535353" : "inherit"}} >
                     <img className="artistImg" alt ="artist img" src={this.props.images[0]?this.props.images[0].url:"https://www.theatromarrakech.com/wp-content/plugins/urvenue-plugin/images/placeholder.artist.jpg"}></img>
                     <div className="spotcard-body">
                         <h1>{this.props.name}</h1>
