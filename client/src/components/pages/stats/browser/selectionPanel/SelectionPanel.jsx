@@ -8,10 +8,9 @@ class SelectionPanel extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selected:[],
             selectionItems:this.props.selectionItems
         }
-        this.setSelected=this.props.setSelected
+        
     }
 
     componentDidUpdate(prevProps) {
@@ -23,11 +22,13 @@ class SelectionPanel extends Component {
         }
     }
 
-    render() {
 
-        return this.state.selectionItems.map(elm => <SelectionCard {...elm} setSelected={this.setSelected} />)
-         
+    render() {
+        return this.state.selectionItems.map(elm => <SelectionCard {...elm} setSelected={this.props.setSelected} key={elm.id} selectedIds={this.props.selectedIds} removeSelected={this.props.removeSelected} />)
     }
+    
 }
 
 export default SelectionPanel
+
+//refactor stateless

@@ -11,7 +11,6 @@ const Radar = props => {
         for(let i = 0;i<5;i++){
             switch (i) {
                 case 0:
-                    console.log(element.body)
                     cleanData[i]["song"+idx]=Math.trunc(element.body.danceability*100)
                     break;
                 case 1:
@@ -34,8 +33,7 @@ const Radar = props => {
         }
     });
     
-    console.log("-------------------------")
-    console.log(cleanData)
+    
     
     
 return(
@@ -45,7 +43,7 @@ return(
         keys={[ 'song0', 'song1', 'song2','song3','song4' ]}
         indexBy="feature"
         maxValue={100}
-        margin={{ top: 100, right: 100, bottom: 100, left: 100 }}
+        margin={{ top: 100, right: 100, bottom: 0, left: 100 }}
         curve="cardinalClosed"
         borderWidth={3}
         borderColor={{ from: 'color', modifiers: [] }}

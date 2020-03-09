@@ -1,10 +1,10 @@
 const express = require('express');
 const router  = express.Router();
 
-var SpotifyWebApi = require('spotify-web-api-node');
+const SpotifyWebApi = require('spotify-web-api-node');
  
 // credentials are optional
-var spotifyApi = new SpotifyWebApi({
+const spotifyApi = new SpotifyWebApi({
   clientId: `${process.env.SpotifyClient}`,
   clientSecret: `${process.env.SpotifyClientSecret}`,
   redirectUri: `${process.env.URI}`
@@ -17,14 +17,14 @@ spotifyApi.clientCredentialsGrant()
 router.post('/searchTracks', (req, res, next) => {
 
   spotifyApi.searchTracks(req.body.searchInput,{limit:5})
-    .then( trackData => res.status(200).json(trackData.body), err => console.error(err))   
+    .then( trackData => res.json(trackData.body), err => console.error(err))   
   })
 
 
 router.post('/searchArtists', (req,res,next)=>{
 
   spotifyApi.searchArtists(req.body.searchInput,{limit:5})
-    .then( artistData => res.status(200).json(artistData.body))
+    .then( artistData => res.json(artistData.body))
     .catch(err => console.error(err))
 
 })

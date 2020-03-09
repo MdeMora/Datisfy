@@ -19,7 +19,7 @@ class Charter extends Component {
             selectedChart:"",
             hide: false
         }
-        this.services = new SearchServices()
+        this.searchServices = new SearchServices()
     }
 
     componentDidMount(){
@@ -48,7 +48,7 @@ class Charter extends Component {
             this.setState({
                 arrID:arrIdCopy
             },async ()=> {
-                let audioFeaturesAsync = await this.services.audioFeatures(this.state.arrID)
+                let audioFeaturesAsync = await this.searchServices.audioFeatures(this.state.arrID)
                 this.setState({audioFeatures:audioFeaturesAsync})
             })
         }

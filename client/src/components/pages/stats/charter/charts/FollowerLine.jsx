@@ -18,20 +18,18 @@ const FollowerLine = props => {
     dirtyData.forEach( (elm,idx) => {
         cleanData[0].data[idx].x=elm.name
         cleanData[0].data[idx].y=elm.followers.total
-        console.log(elm.followers)
 
     })
     
     
-    console.log("-------------------------")
-    console.log(cleanData)
+    
     
     
 return(
     
     <ResponsiveLine
         data={cleanData}
-        margin={{ top: 50, right: 20, bottom: 60, left: 60 }}
+        margin={{ top: 0, right: 20, bottom: 60, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         curve="cardinal"
@@ -55,7 +53,8 @@ return(
             legendOffset: 48,
             legendPosition: 'middle'
         }}
-        colors={{ scheme: 'nivo' }}
+        colors="#1db954"
+        borderColor="#1db954"
         lineWidth={4}
         pointSize={20}
         pointColor={{ from: 'color', modifiers: [] }}
@@ -69,6 +68,7 @@ return(
         useMesh={true}
         motionStiffness={30}
         motionDamping={7}
+        theme={{dots: {text: {fill: 'rgb(0,0,0)'}} ,legends:{text:{fill:'rgb(0,0,0)'}}}}
     />
 )}
 

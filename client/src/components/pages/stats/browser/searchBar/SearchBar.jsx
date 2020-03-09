@@ -17,7 +17,7 @@ class SearchBar extends Component {
             selectionItems:[]
         }
         this.filterItems=this.props.filterItems
-        this.services=new SearchServices()
+        this.searchServices=new SearchServices()
     }
 
     componentDidUpdate(prevProps) {

@@ -16,6 +16,7 @@ class StatsIndex extends Component {
         this.state = {
             inputSearch:"",
             selectedObjs:[],
+            selectedIds:[],
             selectedTerm:""
         }
 
@@ -28,14 +29,35 @@ class StatsIndex extends Component {
     setSelected = (selected,reset) => {
 
         if(!reset){
-            let selectedObjsCopy = [...this.state.selectedObjs]
-            selectedObjsCopy.push(selected)
-            this.setState({selectedObjs:selectedObjsCopy})
+            let selectedObjs = [...this.state.selectedObjs]
+            let selectedIdsCopy = [...this.state.selectedIds]
+
+            selectedIdsCopy.push(selected.id)
+            selectedObjs.push(selected)
+
+            this.setState({selectedObjs:selectedObjs,selectedIds:selectedIdsCopy})
         }else{
-            this.setState({selectedObjs:[]})
+            this.setState({selectedObjs:[],selectedIds:[]})
         }
         
     }//german
+
+    removeSelected = (id) =>{
+
+        let selectedObjs = [...this.state.selectedObjs]
+        let selectedIdsCopy = [...this.state.selectedIds]
+
+        selectedObjs.forEach((elm,idx)=>{
+           if(elm.id === id){
+            selectedObjs.splice(idx,1)
+            selectedIdsCopy.splice(idx,1)
+           } 
+        })
+
+        console.log("deberia de haber borrado el objeto",selectedObjs)
+        this.setState({selectedObjs:selectedObjs,selectedIds:selectedIdsCopy})
+        
+    }
 
     setIndexTerm = input => {
         this.setState({ selectedTerm: input });
@@ -46,7 +68,7 @@ class StatsIndex extends Component {
             <Container className="statIndex">
                 <Row>
                     <Col>
-                        <Browser setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm}/>
+                        <Browser setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm} removeSelected={this.removeSelected} selectedIds={this.state.selectedIds}/>
                     </Col>
                     <Col>
                         <Charter selectedObjs={this.state.selectedObjs} selectedTerm={this.state.selectedTerm}/>

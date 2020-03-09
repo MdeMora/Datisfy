@@ -22,15 +22,14 @@ const TrackLine = props => {
     })
     
     
-    console.log("-------------------------")
-    console.log(cleanData)
+    
     
     
 return(
     
     <ResponsiveLine
         data={cleanData}
-        margin={{ top: 50, right: 20, bottom: 60, left: 60 }}
+        margin={{ top: 0, right: 20, bottom: 60, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: '0', max: '100', stacked: true, reverse: false }}
         curve="cardinal"
@@ -52,9 +51,11 @@ return(
             tickRotation: 0,
             legend: 'Song Names',
             legendOffset: 48,
-            legendPosition: 'middle'
+            legendPosition: 'middle',
         }}
-        colors={{ scheme: 'nivo' }}
+        colors="#1db954"
+        colorBy="id"
+        borderColor="#1db954"
         lineWidth={4}
         pointSize={20}
         pointColor={{ from: 'color', modifiers: [] }}
@@ -64,10 +65,10 @@ return(
         pointLabelYOffset={4}
         enableArea={true}
         areaOpacity={0.25}
-        crosshairType="top"
         useMesh={true}
         motionStiffness={30}
         motionDamping={7}
+        theme={{dots: {text: {fill: 'rgb(0,0,0)'}} ,legends:{text:{fill:'rgb(0,0,0)'}},axis: {textColor: '#ffffff',fontSize: '14px',tickColor: '#eee',}}}
     />
 )}
 

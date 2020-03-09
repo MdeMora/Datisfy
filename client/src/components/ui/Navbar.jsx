@@ -14,11 +14,11 @@ class Navigation extends Component {
     constructor(props) {
         super(props)
         this.state = {}
-        this.services = new AuthServices()
+        this.authServices = new AuthServices()
     }
 
     logout = () => {
-        this.services.logout()
+        this.authServices.logout()
             .then(response => {
                 this.props.setTheUser(false)
             })
@@ -27,7 +27,7 @@ class Navigation extends Component {
 
 
     render() {
-        console.log("--Navbar 28",this.props)
+        console.log("--Navbar 198",this.props)
         const greeting = this.props.loggedInUser ? <>Hola, {this.props.loggedInUser.username}</> : <>Hola, invitad@</>
 
 

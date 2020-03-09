@@ -19,7 +19,7 @@ class Browser extends Component {
       selectedTerm: "",
       hide: false
     };
-    this.services = new SearchServices();
+    this.searchServices = new SearchServices();
     this.setSelected = this.props.setSelected
   }
 
@@ -43,11 +43,11 @@ class Browser extends Component {
 
     switch (this.state.selectedTerm) {
       case "track":
-          this.services.track({searchInput:input})
+          this.searchServices.track({searchInput:input})
               .then(result =>this.setState({selectionItems:result.tracks.items}))
           break;
       case "artist":
-        this.services.artist({searchInput:input})
+        this.searchServices.artist({searchInput:input})
                   .then(result => this.setState({selectionItems:result.artists.items}))
         break;
   
@@ -85,7 +85,7 @@ class Browser extends Component {
             </div>
           ) : (
               <>
-              <SelectionPanel selectionItems={this.state.selectionItems} setSelected={this.setSelected}/>
+              <SelectionPanel selectionItems={this.state.selectionItems} setSelected={this.setSelected} removeSelected={this.props.removeSelected} selectedIds={this.props.selectedIds}/>
               <Link className="backBtn" to="/charts" onClick={this.reset}>Go Back</Link>
               <Link className="backBtn" to="/charts" onClick={this.resetSelection}>Reset</Link>
               
