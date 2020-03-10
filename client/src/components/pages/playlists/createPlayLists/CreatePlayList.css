@@ -1,0 +1,13 @@
+.playlist-input{
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid #535353;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.playlist-input:focus{
+    background-color: inherit;
+    box-shadow: 0 3px 2px -2px #1db954;
+    outline: 0 none;
+}

@@ -5,7 +5,8 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email:String,
-  path:String
+  path:String,
+  playlists:[{ type: mongoose.Schema.ObjectId, ref: 'PlayList'}]
 }, {
   timestamps: {
     createdAt: 'created_at',

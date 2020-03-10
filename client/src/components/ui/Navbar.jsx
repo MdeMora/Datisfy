@@ -44,6 +44,7 @@ class Navigation extends Component {
                                 <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/profile">Perfil</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/charts">charts</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/playlists">playlistzs</Link></Nav.Link>
                                 <Nav.Link onClick={this.logout}>Cerrar sesión</Nav.Link>
                                 <Nav.Link as="small">{greeting}</Nav.Link>
                             </Nav>
@@ -61,6 +62,7 @@ class Navigation extends Component {
                                 <Nav.Link as="div"> <Link to="/signup">Registro</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/login">Inicio sesión</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/charts">charts</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/playlists">playlistzs</Link></Nav.Link>
                                 <Nav.Link as="small">{greeting}</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>

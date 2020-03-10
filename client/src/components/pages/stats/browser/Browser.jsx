@@ -58,6 +58,8 @@ class Browser extends Component {
   };
 
   render() {
+
+    
     return (
       <article>
         <div className="d-flex flex-column">
@@ -73,22 +75,32 @@ class Browser extends Component {
           {!this.state.hide ? (
             <div className="container">
               
-                
+                  {this.props.tracks &&
                   <div onClick={() => this.setState({ hide: true })}>
                     <BrowserBtn name="track" click={this.click} />
                   </div>
-                
+                }
+                {this.props.artists && 
                   <div onClick={() => this.setState({ hide: true })}>
                     <BrowserBtn name="artist" click={this.click} />
                   </div>
-              
+              }
             </div>
           ) : (
               <>
               <SelectionPanel selectionItems={this.state.selectionItems} setSelected={this.setSelected} removeSelected={this.props.removeSelected} selectedIds={this.props.selectedIds}/>
-              <Link className="backBtn" to="/charts" onClick={this.reset}>Go Back</Link>
-              <Link className="backBtn" to="/charts" onClick={this.resetSelection}>Reset</Link>
-              
+              {this.props.artists? (
+                <>
+                <Link className="backBtn" to="/charts" onClick={this.reset}>Go Back</Link>
+                <Link className="backBtn" onClick={this.resetSelection}>Reset </Link>
+                </>
+              ):(
+                <>
+                <Link className="backBtn" to="/playlist" onClick={this.reset}>Go Back</Link>
+                <Link className="backBtn" onClick={this.resetSelection}>Reset </Link>
+                </>
+              )
+              }
               </>
             )}
         </div>

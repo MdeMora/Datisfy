@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import './SelectionCard.css'
+import Col from 'react-bootstrap/Col'
 
 
 
@@ -52,19 +53,39 @@ class SelectionCard extends Component{
     render(){
         return(
             this.props.type==="track"?(
-                <div className="spotcard d-flex" 
-                onClick={this.toggleIsSelected} // Esto lo hace todo
-                onMouseEnter={this.toggleHover} //Esto ok
-                onMouseLeave={this.toggleHover} //Ok
-                style={{backgroundColor: this.state.hover || this.state.arrIds.includes(this.state.cardId) ? "#535353" : "inherit"}} >
-                    
-                    <img src={this.props.album.images[0].url} alt="img track"></img>
-                    <div className="spotcard-body">
-                        <h1>{this.props.name}</h1>
-                        <p>{this.props.type} - {this.props.artists[0].name} - {this.millisToMinutesAndSeconds(this.props.duration_ms)}</p>
-                    
+                this.props.minified?(
+                    <Col md={6}>
+                        <div className="spotcard d-flex" 
+                        onClick={this.toggleIsSelected} // Esto lo hace todo
+                        onMouseEnter={this.toggleHover} //Esto ok
+                        onMouseLeave={this.toggleHover} //Ok
+                        style={{backgroundColor: this.state.hover ? "#535353" : "inherit"}} >
+                        
+                            <img src={this.props.album.images[0].url} alt="img track"></img>
+                            <div className="spotcard-body">
+                                <h1>{this.props.name}</h1>
+                                <p>{this.props.type} - {this.props.artists[0].name} - {this.millisToMinutesAndSeconds(this.props.duration_ms)}</p>
+                            
+                            </div>
+                        </div>
+                    </Col>
+                ):(
+
+                    <div className="spotcard d-flex" 
+                    onClick={this.toggleIsSelected} // Esto lo hace todo
+                    onMouseEnter={this.toggleHover} //Esto ok
+                    onMouseLeave={this.toggleHover} //Ok
+                    style={{backgroundColor: this.state.hover || this.state.arrIds.includes(this.state.cardId) ? "#535353" : "inherit"}} >
+                        
+                        <img src={this.props.album.images[0].url} alt="img track"></img>
+                        <div className="spotcard-body">
+                            <h1>{this.props.name}</h1>
+                            <p>{this.props.type} - {this.props.artists[0].name} - {this.millisToMinutesAndSeconds(this.props.duration_ms)}</p>
+                        
+                        </div>
                     </div>
-                </div>
+                )
+                
 
             ):( //Esto de artistas NO MIRAR Y COPIAR DESPUES
                 <div className="spotcard d-flex" onClick={this.toggleIsSelected} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} style={{backgroundColor: this.state.isSelected || this.state.hover || this.state.arrIds.includes(this.state.cardId) ? "#535353" : "inherit"}} >

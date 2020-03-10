@@ -67,8 +67,8 @@ class StatsIndex extends Component {
         return (
             <Container className="statIndex">
                 <Row>
-                    <Col>
-                        <Browser setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm} removeSelected={this.removeSelected} selectedIds={this.state.selectedIds}/>
+                    <Col md={4}>
+                        <Browser tracks artists setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm} removeSelected={this.removeSelected} selectedIds={this.state.selectedIds}/>
                     </Col>
                     <Col>
                         <Charter selectedObjs={this.state.selectedObjs} selectedTerm={this.state.selectedTerm} arrId={this.state.selectedIds}/>

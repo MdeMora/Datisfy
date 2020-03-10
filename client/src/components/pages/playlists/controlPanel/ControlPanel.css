@@ -1,0 +1,23 @@
+
+
+.controlPanel h1{
+    font-size: 1em;
+}
+
+.controlPanel h2{
+    font-size: 0.8em;
+}
+.controlPanel hr{
+    background-color: #1db954;
+}
+
+.createBtn{
+    border:1px solid #1db954;
+    color:#1db954;
+    background-color: inherit;
+    margin:5px;
+    font-size: 0.8em;
+}
+
+.createBtn:hover{color:#1db954}
+

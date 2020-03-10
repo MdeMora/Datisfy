@@ -1,0 +1,28 @@
+.genreModal{
+    padding: 68.5px 0px;
+    margin:10px;
+    text-align: center;
+    transition: 0.4s;
+    border-bottom: 1px solid #1db954;
+
+}
+
+.genreModal:hover{
+    background-color: #535353;
+    color:#1db954;
+}
+
+.showcaseHero{
+    padding: 30px 0px;
+    font-size: 3em;
+    border-bottom:1px solid #1db954;
+}
+
+.genreModal:hover:after {
+    content: '';
+    border-bottom: 6px solid #1db954;
+    width: 50px;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 25px); /* This will make border center aligned */
+}
