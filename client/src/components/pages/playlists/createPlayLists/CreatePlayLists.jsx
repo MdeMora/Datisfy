@@ -126,8 +126,8 @@ postPlaylist = () =>{
                     </div>
                 </Form.Group>
                 <Form.Group>
-                    <div className="d-flex">
-                        Genres&Moods:
+                    <div className="d-flex al">
+                        <p>Genres&Moods:</p>
                         <div className="select">
                             <select  
                             name="genres" 

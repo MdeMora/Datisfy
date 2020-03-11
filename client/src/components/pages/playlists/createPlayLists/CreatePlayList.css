@@ -17,28 +17,22 @@
 }
 
 select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
     appearance: none;
     outline: 0;
     box-shadow: none;
-    border: 0 !important;
-    background: #2c3e50;
+    border: 0;
+    background: inherit;
     background-image: none;
   }
   /* Remove IE arrow */
-  select::-ms-expand {
-    display: none;
-  }
+ 
   /* Custom Select */
   .select {
     position: relative;
     display: flex;
-    width: 20em;
-    height: 3em;
+    width: 100%;
     line-height: 3;
-    background: #2c3e50;
+    background: #212121;
     overflow: hidden;
     border-radius: .25em;
   }
@@ -55,7 +49,7 @@ select {
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: #34495e;
+    background: #1db954;
     cursor: pointer;
     pointer-events: none;
     -webkit-transition: .25s all ease;
@@ -64,5 +58,5 @@ select {
   }
   /* Transition */
   .select:hover::after {
-    color: #f39c12;
+    color: #212121;
   }
