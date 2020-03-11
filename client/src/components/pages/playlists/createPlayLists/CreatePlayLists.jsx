@@ -23,11 +23,12 @@ class CreatePlayList extends Component {
         playlist:{
             name:"",
             genres:"",
-            moods:"",
+            description:"",
             tags:""
         },
         selectedObjs:[],
         selectedIds:[],
+        genresmoods:["Pop","Latin","Chill","Hip-Hop","Focus","Rock","Workout","Indie","Party","Tastemakers","Electronic","Dance","Decades","Romance","Sleep","R&B","Folk","Jazz","Reggae","Soul","Gaming","TV & Movies","Wellness","Classical","K-Pop","Punk","Dinner","Metal","Cumbia","Kids & Family","Commute","Trending","Blues","Funk","Country"],
         selectedTerm:"",
         errorMsg:"",
     };
@@ -92,13 +93,13 @@ handleChange = e => {
 
 handleSubmit = (e) =>{
     e.preventDefault()
-
     this.state.selectedObjs.length<10? this.setState({errorMsg:"Introduce 10 tracks"}):
-    this.postPlaylist()
+    this.postPlaylist().then(()=>this.props.history.goBack())
+    
 }
 
 postPlaylist = () =>{
-    this.playListServices.postPlaylist({...this.state.playlist, tracks:this.state.selectedObjs})
+    return this.playListServices.postPlaylist({...this.state.playlist, tracks:this.state.selectedObjs})
         .then((x) => console.log("Bien",x))
         .catch(err => console.log(err))
 }
@@ -117,7 +118,7 @@ postPlaylist = () =>{
                         Name:
                         <input type="text" 
                         name="name" 
-                        value={this.state.playlist.title} 
+                        value={this.state.playlist.name} 
                         onChange={this.handleChange} 
                         className="playlist-input"
                         autoComplete="off"
@@ -126,22 +127,30 @@ postPlaylist = () =>{
                 </Form.Group>
                 <Form.Group>
                     <div className="d-flex">
-                        Genres:
-                        <input type="text" 
-                        name="genres" 
-                        value={this.state.playlist.description} 
-                        onChange={this.handleChange}
-                        className="playlist-input"
-                        autoComplete="off"
-                        />
+                        Genres&Moods:
+                        <div className="select">
+                            <select  
+                            name="genres" 
+                            onChange={this.handleChange}
+                            className="playlist-select"
+                            autoComplete="off"
+                            >
+
+                            {this.state.genresmoods.map(elm => {
+                                console.log(elm)
+                                return <option value={elm}>{elm}</option>
+                            })}
+
+                            </select>
+                        </div>
                     </div>
                 </Form.Group>
                 <Form.Group>
                     <div className="d-flex">
-                        Moods: 
+                        Description: 
                         <input type="text" 
-                        name="moods" 
-                        value={this.state.playlist.length} 
+                        name="description"
+                        value={this.state.playlist.description} 
                         onChange={this.handleChange}
                         className="playlist-input"
                         autoComplete="off"
@@ -153,8 +162,7 @@ postPlaylist = () =>{
                         Tags: 
                         <input type="text" 
                         name="tags"
-                        className="" 
-                        value={this.state.playlist.inversions} 
+                        value={this.state.playlist.tags} 
                         onChange={this.handleChange}
                         className="playlist-input"
                         autoComplete="off"

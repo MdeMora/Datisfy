@@ -28,7 +28,7 @@ class Navigation extends Component {
 
     render() {
         console.log("--Navbar 198",this.props)
-        const greeting = this.props.loggedInUser ? <>Hola, {this.props.loggedInUser.username}</> : <>Hola, invitad@</>
+        const greeting = this.props.loggedInUser ? <>{this.props.loggedInUser.username}</> : <>Hola, invitad@</>
 
 
         return (
@@ -42,11 +42,10 @@ class Navigation extends Component {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
                                 <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
-                                <Nav.Link as="div"> <Link to="/profile">Perfil</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/charts">charts</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/playlists">playlistzs</Link></Nav.Link>
                                 <Nav.Link onClick={this.logout}>Cerrar sesión</Nav.Link>
-                                <Nav.Link as="small">{greeting}</Nav.Link>
+                                <Nav.Link as="div"><Link to="/profile">{greeting}</Link></Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -63,7 +62,7 @@ class Navigation extends Component {
                                 <Nav.Link as="div"> <Link to="/login">Inicio sesión</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/charts">charts</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/playlists">playlistzs</Link></Nav.Link>
-                                <Nav.Link as="small">{greeting}</Nav.Link>
+                                <Nav.Link as="div"> {greeting}</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

@@ -48,7 +48,7 @@ class App extends Component {
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
           <Route path="/charts" render={() => <StatsIndex />}/>
-          <Route path="/playlists/new" render={() => <CreatePlayList />}/>
+          <Route path="/playlists/new" render={(props) => <CreatePlayList {...props} />}/>
           <Route path="/playlists" render={() => <PlayListsIndex />}/>
         </Switch>
         <script src="https://kit.fontawesome.com/d9799c2081.js" crossorigin="anonymous"></script>
