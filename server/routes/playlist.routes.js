@@ -20,7 +20,6 @@ router.get('/getOnePlayList/:id', (req, res, next) => {
 
 router.post('/postAddUpvote',(req,res,next) => {
     
-
     console.log(req.body)
     let upvotes=req.body.upvotes+1
 

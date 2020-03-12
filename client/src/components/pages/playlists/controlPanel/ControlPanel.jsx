@@ -13,19 +13,32 @@ class ControlPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      check:"Estoy Working"
+      loggedInUser:this.props.loggedInUser
     };
     this.playListServices = new PlayListServices();
   }
-
-  
+  componentDidUpdate(prevProps) {
+    // Uso tipico (no olvides de comparar los props):
+    if (this.props.loggedInUser !== prevProps.loggedInUser) { 
+      this.setState({
+        loggedInUser:this.props.loggedInUser
+        });
+    }
+}
+  check = () => {
+    if(this.state.loggedInUser){
+      this.props.history.push('/playlists/new')
+    }else{
+      this.props.history.push('/login')
+    }
+  }
 
   render() {
     return (
       <>
         <h1>Control Panel</h1>
         <h2>Filtros</h2>
-        <Link className="createBtn" to="/playlists/new"> Create +</Link>
+        <a className="createBtn" onClick={this.check}> Create +</a>
       </>
     );
   }

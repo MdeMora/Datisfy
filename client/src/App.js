@@ -50,8 +50,8 @@ class App extends Component {
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
           <Route path="/charts" render={() => <StatsIndex />}/>
           <Route path="/playlists/new" render={(props) => <CreatePlayList {...props} />}/>
-          <Route path="/playlists/:id" render={(props) => <PlaylistDetails {...props}/>}/>
-          <Route path="/playlists" render={(props) => <PlayListsIndex {...props}/>}/>
+          <Route path="/playlists/:id" render={(props) => <PlaylistDetails {...props} loggedInUser={this.state.loggedInUser}/>}/>
+          <Route path="/playlists" render={(props) => <PlayListsIndex {...props} loggedInUser={this.state.loggedInUser}/>}/>
         </Switch>
       </>
 

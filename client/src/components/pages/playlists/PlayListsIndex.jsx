@@ -27,7 +27,7 @@ class PlayListIndex extends Component {
 
         return (
             <>
-                <aside className="d-flex controlPanel justify-content-around"> <ControlPanel /> </aside>
+                <aside className="d-flex controlPanel justify-content-around"> <ControlPanel {...this.props} /> </aside>
 
                 <Container className="PlayListIndex">
                 

@@ -15,7 +15,8 @@ class PlaylistDetails extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            playlist:undefined
+            playlist:undefined,
+            loggedInUser:this.props.loggedInUser
         }
         this.playlistService = new PlaylistServices()
     }
@@ -24,10 +25,36 @@ class PlaylistDetails extends Component {
         this.playlistService.getPlaylistDetails(this.props.match.params.id)
         .then(x => this.setState({playlist:x.data}))
         .catch(err => console.log(err))
+
+        console.log(this.state.loggedInUser)
+
     }
+
+    componentDidUpdate(prevProps) {
+        // Uso tipico (no olvides de comparar los props):
+        if (this.props.loggedInUser !== prevProps.loggedInUser) { 
+          this.setState({
+            loggedInUser:this.props.loggedInUser
+            });
+        }
+    }
+    
     upvote = () => {
-        this.playlistService.postAddUpvote({plId:this.state.playlist._id, upvotes:this.state.playlist.upvotes})
+        if(this.state.loggedInUser){
+            this.playlistService.postAddUpvote({plId:this.state.playlist._id, upvotes:this.state.playlist.upvotes})
+            this.refresh()
+        }else{
+            this.props.history.push('/login')
+        }
+        // this.state.loggedInUser && this.refresh() //Engañar al front 
     }
+
+    refresh = () => {
+        let actObj = this.state.playlist
+        actObj.upvotes+=1
+        this.setState({playlist:actObj})
+    }
+    
     render() {
 
         return (
@@ -41,12 +68,12 @@ class PlaylistDetails extends Component {
                         <h2>{this.state.playlist.author}</h2>
                         <h3>{this.state.playlist.description}</h3>
                         <h4>{this.state.playlist.upvotes}</h4>
-                        <div className="upvoteBtn" onClick={this.upvote}>Upvote! +1</div>
+                        <div className="upvoteBtn p-2" onClick={this.upvote}>Upvote! +1</div>
                     </header>
                     <div>
                         <Row>
                         {this.state.playlist.tracks.map(elm => {
-                            return <SelectionCard key={elm._id} {...elm} {...this.props}/>
+                            return <SelectionCard key={elm._id} {...elm} {...this.props} minified/>
                             })}
                         </Row>
                     </div>
