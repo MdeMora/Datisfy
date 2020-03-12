@@ -1,0 +1,7 @@
+.upvoteBtn{
+    border: 1px solid #1db954;
+    display: inline-block;
+}
+.upvoteBtn:hover{
+    color:#1db954
+}

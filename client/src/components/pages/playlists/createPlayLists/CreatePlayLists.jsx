@@ -126,8 +126,8 @@ postPlaylist = () =>{
                     </div>
                 </Form.Group>
                 <Form.Group>
-                    <div className="d-flex al">
-                        <p>Genres&Moods:</p>
+                    <div className="d-flex align-items-center">
+                        Genres&Moods:
                         <div className="select">
                             <select  
                             name="genres" 
@@ -137,7 +137,6 @@ postPlaylist = () =>{
                             >
 
                             {this.state.genresmoods.map(elm => {
-                                console.log(elm)
                                 return <option value={elm}>{elm}</option>
                             })}
 

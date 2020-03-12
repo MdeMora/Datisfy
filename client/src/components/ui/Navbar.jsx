@@ -28,7 +28,7 @@ class Navigation extends Component {
 
     render() {
         console.log("--Navbar 198",this.props)
-        const greeting = this.props.loggedInUser ? <>{this.props.loggedInUser.username}</> : <>Hola, invitad@</>
+        const greeting = this.props.loggedInUser ? <>{this.props.loggedInUser.username}</> : <>Invitad@</>
 
 
         return (
@@ -37,7 +37,7 @@ class Navigation extends Component {
             this.props.loggedInUser ?
                 (
                     <Navbar className="spotNav" expand="lg" variant="dark">
-                        <Navbar.Brand href="/">dev Nav!</Navbar.Brand>
+                        <Navbar.Brand href="/"></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
@@ -53,7 +53,7 @@ class Navigation extends Component {
                 :
                 (
                     <Navbar className="spotNav" expand="lg" variant="dark">
-                        <Navbar.Brand href="#home">dev Nav!</Navbar.Brand>
+                        <Navbar.Brand href="/"></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">

@@ -1,11 +1,10 @@
 .spotcard{
     margin: 5px 0px;
     border-bottom: 1px solid #535353;
+    transition: 0.4s;
 }
 
-.spotcard:hover{
-    background-color: aquamarine;
-}
+
 
 .spotcard img{
     width: 4em

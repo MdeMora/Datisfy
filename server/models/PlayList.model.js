@@ -5,7 +5,6 @@ const playListSchema = new Schema({
   name: String,
   author:String,
   genres:String,
-  moods:String,
   upvotes:Number,
   tracks: Array,
   tags:Array,

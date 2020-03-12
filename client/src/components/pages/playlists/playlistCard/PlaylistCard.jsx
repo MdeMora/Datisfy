@@ -11,22 +11,38 @@ class PlaylistCard extends Component{
         }
     }
 
-    toggleHover= () => this.setState({hover: !this.state.hover})
+    toggleHoverEnter= () => this.setState({hover: true})
+    toggleHoverLeave= () => this.setState({hover: false})
+    click = () => {
+       
+        this.props.history.push(`/playlists/${this.props._id}`)
+        
+    }
 
 
     render(){
         return (
             <Col md={6}>
                 <div className="spotcard d-flex" 
-                onMouseEnter={this.toggleHover} //Esto ok
-                onMouseLeave={this.toggleHover} //Ok
-                style={{backgroundColor: this.state.hover ? "#535353" : "inherit"}} >
+                onMouseEnter={this.toggleHoverEnter} //Esto ok
+                onMouseLeave={this.toggleHoverLeave} //Ok
+                style={{backgroundColor: this.state.hover ? "#535353" : "inherit"}}
+                onClick={this.click}>
                 
                     <img src={this.props.tracks[0].album.images[0].url} alt="img track"></img>
                     <div className="spotcard-body">
                         <h1>{this.props.name}</h1>
-                        <p>{this.props.genres} - {this.props.moods} </p>
-                    
+                        <div className="d-flex">
+                            <div className="ml-1">
+                                {this.props.genres} - 
+                            </div>
+                            <div className="ml-1">
+                                {this.props.author} - 
+                            </div>
+                            <div className="ml-1">
+                                Upvotes: <span className="upvotes">{this.props.upvotes}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Col>

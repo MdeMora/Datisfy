@@ -16,6 +16,7 @@ import NavBar from './components/ui/Navbar'
 
 
 import AuthServices from './services/auth.services'
+import PlaylistDetails from './components/pages/playlists/playlistDetails/PlaylistDetails';
 
 
 class App extends Component {
@@ -49,9 +50,9 @@ class App extends Component {
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
           <Route path="/charts" render={() => <StatsIndex />}/>
           <Route path="/playlists/new" render={(props) => <CreatePlayList {...props} />}/>
-          <Route path="/playlists" render={() => <PlayListsIndex />}/>
+          <Route path="/playlists/:id" render={(props) => <PlaylistDetails {...props}/>}/>
+          <Route path="/playlists" render={(props) => <PlayListsIndex {...props}/>}/>
         </Switch>
-        <script src="https://kit.fontawesome.com/d9799c2081.js" crossorigin="anonymous"></script>
       </>
 
     )

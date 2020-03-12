@@ -21,6 +21,8 @@ select {
     outline: 0;
     box-shadow: none;
     border: 0;
+    border-bottom: 1px solid #535353;
+    color: #535353;
     background: inherit;
     background-image: none;
   }

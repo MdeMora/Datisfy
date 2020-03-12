@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import PlayListServices from '../../../services/playlist.services'
@@ -15,8 +14,8 @@ import './PlayListsIndex.css'
 
 class PlayListIndex extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             check:"estoyWorking"
         }
@@ -32,7 +31,8 @@ class PlayListIndex extends Component {
 
                 <Container className="PlayListIndex">
                 
-                    <Col><Showcase /></Col>
+                    <Col><Showcase {...this.props}/></Col>
+
                 
                 </Container>
             </>

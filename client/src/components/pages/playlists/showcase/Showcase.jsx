@@ -60,7 +60,7 @@ class Showcase extends Component {
           <Row>
             {this.state.playlists.map(elm => {
               return (elm.genres===this.state.selectedGenre && (
-                <PlaylistCard key={elm._id} {...elm} />)
+                <PlaylistCard key={elm._id} {...elm} {...this.props}/>)
               )
             })}
           </Row>
