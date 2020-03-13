@@ -13,11 +13,7 @@ class PlaylistCard extends Component{
 
     toggleHoverEnter= () => this.setState({hover: true})
     toggleHoverLeave= () => this.setState({hover: false})
-    click = () => {
-       
-        this.props.history.push(`/playlists/${this.props._id}`)
-        
-    }
+    click = () => this.props.history.push(`/playlists/${this.props._id}`) 
 
 
     render(){

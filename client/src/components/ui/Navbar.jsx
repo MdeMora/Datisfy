@@ -41,10 +41,10 @@ class Navigation extends Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
-                                <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
-                                <Nav.Link as="div"> <Link to="/charts">charts</Link></Nav.Link>
-                                <Nav.Link as="div"> <Link to="/playlists">playlistzs</Link></Nav.Link>
-                                <Nav.Link onClick={this.logout}>Cerrar sesión</Nav.Link>
+                                <Nav.Link as="div"> <Link to="/">Home</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/charts">Charts</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/playlists">Playlists</Link></Nav.Link>
+                                <Nav.Link onClick={this.logout}>Log Out</Nav.Link>
                                 <Nav.Link as="div"><Link to="/profile">{greeting}</Link></Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
@@ -57,11 +57,11 @@ class Navigation extends Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
-                                <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
-                                <Nav.Link as="div"> <Link to="/signup">Registro</Link></Nav.Link>
-                                <Nav.Link as="div"> <Link to="/login">Inicio sesión</Link></Nav.Link>
-                                <Nav.Link as="div"> <Link to="/charts">charts</Link></Nav.Link>
-                                <Nav.Link as="div"> <Link to="/playlists">playlistzs</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/">Home</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/signup">Sign Up</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/login">Log In</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/charts">Charts</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/playlists">Playlists</Link></Nav.Link>
                                 <Nav.Link as="div"> {greeting}</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>

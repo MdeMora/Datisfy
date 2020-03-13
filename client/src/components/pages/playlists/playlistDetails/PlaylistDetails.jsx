@@ -32,11 +32,8 @@ class PlaylistDetails extends Component {
 
     componentDidUpdate(prevProps) {
         // Uso tipico (no olvides de comparar los props):
-        if (this.props.loggedInUser !== prevProps.loggedInUser) { 
-          this.setState({
-            loggedInUser:this.props.loggedInUser
-            });
-        }
+        this.props.loggedInUser !== prevProps.loggedInUser && this.setState({loggedInUser:this.props.loggedInUser});
+        
     }
     
     upvote = () => {

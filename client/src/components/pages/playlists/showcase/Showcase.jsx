@@ -17,16 +17,20 @@ class Showcase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      check:"Estoy Working",
       playlists:[],  
       genresmoods:["Pop","Latin","Chill","Hip-Hop","Focus","Rock","Workout","Indie","Party","Tastemakers","Electronic","Dance","Decades","Romance","Sleep","R&B","Folk","Jazz","Reggae","Soul","Gaming","TV & Movies","Wellness","Classical","K-Pop","Punk","Dinner","Metal","Cumbia","Kids & Family","Commute","Trending","Blues","Funk","Country"],
-      hideModals:false,
+      hideModals:this.props.showbtn,
       selectedGenre:""
     };
     this.playListServices = new PlayListServices();
   }
 
   componentDidMount = () => this.getAllPlaylists()
+
+  componentDidUpdate(prevProps) {
+    this.props.showbtn !== prevProps.showbtn && this.setState({hideModals:this.props.showbtn})
+
+  }
 
   getAllPlaylists = () => {
     this.playListServices.getAllPlaylists()
@@ -35,6 +39,7 @@ class Showcase extends Component {
   }
 
   click = (elm) =>{
+    this.props.showBackBtn()
     this.setState({hideModals:true,selectedGenre:elm})
   }
 
@@ -49,7 +54,7 @@ class Showcase extends Component {
 
           {this.state.genresmoods.map(elm => {
             return(
-              <Col md={12} lg={3} className="genreModal" onClick={ () =>this.click(elm)}>
+              <Col md={12} lg={3} className="genreModal" onClick={ () => this.click(elm)}>
                 <h3>{elm}</h3>
               </Col>
             )

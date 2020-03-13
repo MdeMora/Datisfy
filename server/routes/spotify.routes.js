@@ -17,22 +17,19 @@ spotifyApi.clientCredentialsGrant()
 router.post('/searchTracks', (req, res, next) => {
 
   spotifyApi.searchTracks(req.body.searchInput,{limit:5})
-    .then( trackData => res.json(trackData.body), err => console.error(err))   
+    .then( trackData => res.json(trackData.body), err => console.error(err))
+    .catch(err => console.log(err)) 
   })
 
 
 router.post('/searchArtists', (req,res,next)=>{
-
   spotifyApi.searchArtists(req.body.searchInput,{limit:5})
     .then( artistData => res.json(artistData.body))
-    .catch(err => console.error(err))
-
+    .catch(err => console.log(err))
 })
 
 
 router.post('/audioFeatures',(req,res,next)=>{
-
-
   arrId=[...req.body]
   promiseArr = []
 
@@ -41,8 +38,6 @@ router.post('/audioFeatures',(req,res,next)=>{
   Promise.all(promiseArr)
     .then(result => res.json(result))
     .catch(err => console.log(err))
-
-
 })
 
   module.exports = router;

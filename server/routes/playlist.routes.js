@@ -19,28 +19,29 @@ router.get('/getOnePlayList/:id', (req, res, next) => {
 })
 
 router.post('/postAddUpvote',(req,res,next) => {
-    
-    console.log(req.body)
-    let upvotes=req.body.upvotes+1
-
-    let addOneUpvote = {upvotes:upvotes}
-
-
-    Playlist.findByIdAndUpdate(req.body.plId, addOneUpvote)
+    Playlist.findByIdAndUpdate(req.body.plId, {upvotes:req.body.upvotes+1})
     .then(x => console.log("todobien"))
+    .catch(err => console.log("mkErr: Add Upvote | -post /postAddUpvote",err))
+
+})
+
+router.post('/getUserPlaylist',(req,res)=>{
+    User.findById(req.body.userId)
+    .populate('playlists')
+    .then(x => res.json(x))
+    .catch(err => console.log("mkErr: User Playlist | -post /getUserPlayList",err))
+
 })
 
 router.post('/new', (req, res, next) => {
-    console.log("HOlasdasd",req.body,req.user)
     obj = {...req.body, author:req.user.username, upvotes:0}
+    
+    console.log(obj)
     let playId
     Playlist.create(obj)
     .then(thePlayList => playId=thePlayList._id)
-    .then(x => {
-        let addPlaylistToUser = {$push:{playlists:playId}}
-        User.findByIdAndUpdate(req.user._id,addPlaylistToUser)
-        .then(x=> console.log("todo bien"))
-    })
-    .catch(err => console.log(err))
+    .then(x => addPlaylistToUser = {$push:{playlists:playId}})
+    .then(addPlaylistToUser => User.findByIdAndUpdate(req.user._id,addPlaylistToUser))
+    .catch(err => console.log("mkErr: new Playlist | -post /new",err))
 })
   module.exports = router;

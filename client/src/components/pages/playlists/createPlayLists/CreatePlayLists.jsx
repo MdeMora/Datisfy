@@ -4,10 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import SelectionCard from "../../stats/browser/selectionPanel/selectedCard/SelectionCard"
-
-// import { Link } from 'react-router-dom'
 
 import "./CreatePlayList.css"; 
 
@@ -72,7 +69,6 @@ removeSelected = (id) =>{
        } 
     })
 
-    console.log("deberia de haber borrado el objeto",selectedObjs)
     this.setState({selectedObjs:selectedObjs,selectedIds:selectedIdsCopy})
     
 }
@@ -83,25 +79,20 @@ setIndexTerm = input => {
 
 handleChange = e => {
     let { name, value } = e.target
-    if(name == "tags") {
-
-    }
-    this.setState({
-        playlist: { ...this.state.playlist, [name]: value }
-    })
+    
+    this.setState({playlist: { ...this.state.playlist, [name]: value }})
 }
 
 handleSubmit = (e) =>{
     e.preventDefault()
     this.state.selectedObjs.length<10? this.setState({errorMsg:"Introduce 10 tracks"}):
-    this.postPlaylist().then(()=>this.props.history.goBack())
+    this.postPlaylist()
     
 }
 
 postPlaylist = () =>{
-    return this.playListServices.postPlaylist({...this.state.playlist, tracks:this.state.selectedObjs})
-        .then((x) => console.log("Bien",x))
-        .catch(err => console.log(err))
+    this.playListServices.postPlaylist({...this.state.playlist, tracks:this.state.selectedObjs})
+    this.props.history.push('/playlists')
 }
   
 
@@ -133,8 +124,8 @@ postPlaylist = () =>{
                             name="genres" 
                             onChange={this.handleChange}
                             className="playlist-select"
-                            autoComplete="off"
                             >
+                            <option value="selectOne"></option>
 
                             {this.state.genresmoods.map(elm => {
                                 return <option value={elm}>{elm}</option>

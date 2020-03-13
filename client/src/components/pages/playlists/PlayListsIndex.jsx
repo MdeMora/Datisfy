@@ -9,31 +9,34 @@ import PlayListServices from '../../../services/playlist.services'
 import ControlPanel from './controlPanel/ControlPanel'
 import Showcase from './showcase/Showcase'
 
-
-import './PlayListsIndex.css'
-
 class PlayListIndex extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            check:"estoyWorking"
+            showbtn:false
         }
         this.playListService = new PlayListServices()
     }
+
+//     componentDidUpdate(prevProps,prevState) {
+//         this.state.showbtn !== prevState.showbtn && this.setState({showbtn:this.state.showbtn})
+//   }
     
+    showBackBtn = () => {
+        this.setState({showbtn:!this.state.showbtn})
+    }
     
     render() {
 
         return (
             <>
-                <aside className="d-flex controlPanel justify-content-around"> <ControlPanel {...this.props} /> </aside>
+                <aside className="d-flex controlPanel justify-content-center"> <ControlPanel {...this.props} showBackBtn={this.showBackBtn} showbtn={this.state.showbtn}/> </aside>
 
                 <Container className="PlayListIndex">
                 
-                    <Col><Showcase {...this.props}/></Col>
+                    <Showcase {...this.props} showBackBtn={this.showBackBtn} showbtn={this.state.showbtn}/>
 
-                
                 </Container>
             </>
         )
