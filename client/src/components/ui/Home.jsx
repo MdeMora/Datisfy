@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import AuthServices from '../../services/auth.services'
-
 import './Home.css'
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
