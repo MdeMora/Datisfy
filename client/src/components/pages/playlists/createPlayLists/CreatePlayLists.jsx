@@ -98,12 +98,12 @@ postPlaylist = () =>{
 
   render() {
     return (
-        <Container className="PlayListIndex">
+        <Container fluid className="PlayListIndex">
         <Row>
-            <Col md={4} className="m-3"><Browser tracks setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm} removeSelected={this.removeSelected} selectedIds={this.state.selectedIds}/></Col>
+            <Col md={4} className="mt-5"><Browser tracks setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm} removeSelected={this.removeSelected} selectedIds={this.state.selectedIds}/></Col>
             
             <Col>
-            <Form className="m-3" onSubmit={this.handleSubmit}>
+            <Form className="m-5 pl-5 pr-5" onSubmit={this.handleSubmit}>
                 <Form.Group>
                     <div className="d-flex">
                         Name:
@@ -135,7 +135,7 @@ postPlaylist = () =>{
                         </div>
                     </div>
                 </Form.Group>
-                <Form.Group>
+                {/* <Form.Group>
                     <div className="d-flex">
                         Description: 
                         <input type="text" 
@@ -158,7 +158,7 @@ postPlaylist = () =>{
                         autoComplete="off"
                         />
                     </div>
-                </Form.Group>
+                </Form.Group> */}
 
                 <div>Tracks {this.state.selectedIds.length} / 10</div>
                 {this.state.errorMsg}

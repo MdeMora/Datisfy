@@ -19,13 +19,6 @@ const Radar = props => {
                 case 2:
                     cleanData[i]["song"+idx]=Math.trunc(element.body.valence*100)
                     break;
-                // case 3:
-                //     cleanData[i]["song"+idx]=Math.trunc(element.body.instrumentalness*100)
-                //     break;
-                // case 4:
-                //     cleanData[i]["song"+idx]=Math.trunc(element.body.speechiness*100)
-                //     break;
-            
                 default:
                     break;
             }

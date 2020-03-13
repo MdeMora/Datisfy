@@ -54,7 +54,6 @@ class StatsIndex extends Component {
            } 
         })
 
-        console.log("deberia de haber borrado el objeto",selectedObjs)
         this.setState({selectedObjs:selectedObjs,selectedIds:selectedIdsCopy})
         
     }
@@ -65,13 +64,13 @@ class StatsIndex extends Component {
     render() {
 
         return (
-            <Container className="statIndex">
-                <Row>
+            <Container fluid className="statIndex">
+                <Row className="m-0">
                     <Col md={4}>
                         <Browser tracks artists setSearch={this.setSearch} setSelected={this.setSelected} setIndexTerm={this.setIndexTerm} removeSelected={this.removeSelected} selectedIds={this.state.selectedIds}/>
                     </Col>
-                    <Col>
-                        <Charter selectedObjs={this.state.selectedObjs} selectedTerm={this.state.selectedTerm} arrId={this.state.selectedIds}/>
+                    <Col md={8}>
+                        <Charter  selectedObjs={this.state.selectedObjs} selectedTerm={this.state.selectedTerm} arrId={this.state.selectedIds}/>
                     </Col>
                 </Row>
             </Container>

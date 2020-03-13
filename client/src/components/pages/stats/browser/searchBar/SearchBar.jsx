@@ -21,20 +21,13 @@ class SearchBar extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        // Uso tipico (no olvides de comparar los props):
-        if (this.props.selectedTerm !== prevProps.selectedTerm) { 
-          this.setState({
-              selectedTerm:this.props.selectedTerm
-            });
-        }
+        this.props.selectedTerm !== prevProps.selectedTerm && this.setState({selectedTerm:this.props.selectedTerm})
     }
 
     handleChange = e => {
         let {value} = e.target
         
-        this.setState({
-            input: value
-        },() => this.filterItems(this.state.input))
+        this.setState({input: value},() => this.filterItems(this.state.input))
     }
 
 

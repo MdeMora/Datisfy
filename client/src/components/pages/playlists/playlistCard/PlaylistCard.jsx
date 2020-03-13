@@ -20,8 +20,8 @@ class PlaylistCard extends Component{
         return (
             <Col md={6}>
                 <div className="spotcard d-flex" 
-                onMouseEnter={this.toggleHoverEnter} //Esto ok
-                onMouseLeave={this.toggleHoverLeave} //Ok
+                onMouseEnter={this.toggleHoverEnter}
+                onMouseLeave={this.toggleHoverLeave}
                 style={{backgroundColor: this.state.hover ? "#535353" : "inherit"}}
                 onClick={this.click}>
                 

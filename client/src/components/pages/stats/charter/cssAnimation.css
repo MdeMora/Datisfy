@@ -77,14 +77,6 @@
   
   }
   
-  /* SPINNING CIRCLE */
-  
-  
-  
-  /* SOLAR SYSTEM */
-  
-  ¡
-  
   .orbit {
       position: relative;
       display: flex;
@@ -97,9 +89,6 @@
   
   .leo {
       position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       border-radius: 50%;
   }
   
@@ -132,13 +121,13 @@
   }
   
   .w1 {
-    transform: rotate3D(1, 1, 1, 90deg)
+    transform: rotate3D(1, 1, 1, 90deg);
   }
   
   .w2 {
-    transform: rotate3D(1, 2, .5, 90deg)
+    transform: rotate3D(1, 2, .5, 90deg);
   }
   
   .w3 {
-    transform: rotate3D(.5, 1, 2, 90deg)
+    transform: rotate3D(.5, 1, 2, 90deg);
   }

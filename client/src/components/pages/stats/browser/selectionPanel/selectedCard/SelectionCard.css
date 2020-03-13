@@ -4,10 +4,8 @@
     transition: 0.4s;
 }
 
-
-
 .spotcard img{
-    width: 4em
+    width: 4em;
 }
 
 .spotcard h1{
@@ -20,7 +18,6 @@
 
 .spotcard-body{
     padding-top:15px;
-    
     padding-left: 10px;
 }
 

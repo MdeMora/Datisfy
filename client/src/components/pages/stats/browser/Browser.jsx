@@ -52,7 +52,6 @@ class Browser extends Component {
         break;
   
       default:
-          console.log("default switch case")
           break;
     }
   };
@@ -63,17 +62,17 @@ class Browser extends Component {
     return (
       <article>
         <div className="d-flex flex-column">
+        <div className="d-flex justify-content-center">
+
           <SearchBar
             selectedTerm={this.state.selectedTerm}
             selectionItems={this.state.selectionItems}
             filterItems={this.filterItems}
           />
-
-          {/* <button onClick={()=> this.setState({hide:true})}>HOli</button>
-                    {!this.state.hide ? <h1>HOLA!</h1> :  <p>HOli</p>} */}
+        </div>
 
           {!this.state.hide ? (
-            <div className="container">
+            <div>
               
                   {this.props.tracks &&
                   <div onClick={() => this.setState({ hide: true })}>

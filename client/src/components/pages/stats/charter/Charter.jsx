@@ -22,12 +22,8 @@ class Charter extends Component {
         this.searchServices = new SearchServices()
     }
 
-    componentDidMount(){
-        
-    }
-
     componentDidUpdate(prevProps, prevState) {
-        // Uso tipico (no olvIdes de comparar los props):
+        
         if (this.props.selectedObjs !== prevProps.selectedObjs) { 
           this.setState({
             selectedObjs:this.props.selectedObjs
@@ -47,24 +43,7 @@ class Charter extends Component {
                 let audioFeaturesAsync = await this.searchServices.audioFeatures(this.state.arrId)
                 this.setState({audioFeatures:audioFeaturesAsync})
             });
-        }
-
-
-        // let selectedObjsCopy = [...this.state.selectedObjs],arrIdCopy=[]
-        
-        // selectedObjsCopy.forEach((elm)=>arrIdCopy.push(elm.Id))
-        
-        // if(prevState.selectedObjs.length!==arrIdCopy.length){
-        //     this.setState({
-        //         arrId:arrIdCopy
-        //     },async ()=> {
-        //         let audioFeaturesAsync = await this.searchServices.audioFeatures(this.state.arrId)
-        //         this.setState({audioFeatures:audioFeaturesAsync})
-        //     })
-        // }
-
-        // Preguntar a german sobre async y await
-        
+        }        
     }
 
 
@@ -87,18 +66,20 @@ class Charter extends Component {
             <article>
                 <div className="d-flex flex-column">
                 {this.state.selectedTerm === "" ? (
-                        
-                    
+                    <div className="d-flex justify-content-center align-content-center">
                     <div className="spinner-box">
 
-                        <div className="blue-orbit leo"></div>
-                        <div className="green-orbit leo"></div>
-                        <div className="red-orbit leo"></div>
-                        <div className="white-orbit w1 leo"></div>
-                        <div className="white-orbit w2 leo"></div>
-                        <div className="white-orbit w3 leo"></div>
+                    <div className="blue-orbit leo"></div>
+                    <div className="green-orbit leo"></div>
+                    <div className="red-orbit leo"></div>
+                    <div className="white-orbit w1 leo"></div>
+                    <div className="white-orbit w2 leo"></div>
+                    <div className="white-orbit w3 leo"></div>
 
                     </div>
+                    </div>
+                    
+
                 ):(
                     <ChartSelectionModal selectedTerm={this.state.selectedTerm} audioFeatures={this.state.audioFeatures} selectedObjs={this.props.selectedObjs}/>
                 )}

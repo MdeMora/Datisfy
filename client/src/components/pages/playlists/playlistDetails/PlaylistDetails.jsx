@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
-
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-
 import PlaylistServices from '../../../../services/playlist.services'
 
 import './PlaylistDetails.css'
 import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container'
+
 import SelectionCard from '../../stats/browser/selectionPanel/selectedCard/SelectionCard'
 
 class PlaylistDetails extends Component {
@@ -43,7 +41,6 @@ class PlaylistDetails extends Component {
         }else{
             this.props.history.push('/login')
         }
-        // this.state.loggedInUser && this.refresh() //Engañar al front 
     }
 
     refresh = () => {
@@ -56,16 +53,33 @@ class PlaylistDetails extends Component {
 
         return (
             this.state.playlist===undefined?(
-                <h1>Cargando</h1>
+                <div className="mkFit d-flex justify-content-center align-items-center">
+                <div className="spinner-box mkAbsolute">
+
+               <div className="blue-orbit leo"></div>
+               <div className="green-orbit leo"></div>
+               <div className="red-orbit leo"></div>
+               <div className="white-orbit w1 leo"></div>
+               <div className="white-orbit w2 leo"></div>
+               <div className="white-orbit w3 leo"></div>
+
+               </div>
+          </div>
             ):(
-                <article>
-                    <header>
-                        {/* <img src={this.state.playlist.tracks[0].album.images[0].url}></img> */}
-                        <h1>{this.state.playlist.name}</h1>
+                <Container>
+                    <header className="d-flex align-items-center flex-column">
+
+                        
+                        <h1>{this.state.playlist.name}</h1> 
+                        <div className="upvoteBtn p-2" onClick={this.upvote}>Upvote! +1</div>
+                        <p className="p-0 m-0">Created by: {this.state.playlist.author}</p>
+                        <p>Upvotes: {this.state.playlist.upvotes}</p>
+
+                        {/* <h1>{this.state.playlist.name}</h1>
                         <h2>{this.state.playlist.author}</h2>
                         <h3>{this.state.playlist.description}</h3>
                         <h4>{this.state.playlist.upvotes}</h4>
-                        <div className="upvoteBtn p-2" onClick={this.upvote}>Upvote! +1</div>
+                        <div className="upvoteBtn p-2" onClick={this.upvote}>Upvote! +1</div> */}
                     </header>
                     <div>
                         <Row>
@@ -74,7 +88,7 @@ class PlaylistDetails extends Component {
                             })}
                         </Row>
                     </div>
-                </article>
+                </Container>
             )
             
         )

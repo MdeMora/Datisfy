@@ -6,7 +6,6 @@
     width: 100%;
     color: #535353;
     transition: 0.2s;
-
 }
 
 .playlist-input:focus{
@@ -38,12 +37,14 @@ select {
     overflow: hidden;
     border-radius: .25em;
   }
+
   select {
     flex: 1;
     padding: 0 .5em;
     color: #fff;
     cursor: pointer;
   }
+  
   /* Arrow */
   .select::after {
     content: '\25BC';

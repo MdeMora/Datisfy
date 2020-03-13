@@ -12,11 +12,8 @@ class ChartDrawer extends Component {
         super(props)
         this.state = {
             selectedChart:this.props.selectedChart,
-            // audioFeatures:this.props.audioFeatures,
         }
     }
-
-
 
     drawChart = () =>{
 

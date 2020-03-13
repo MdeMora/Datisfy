@@ -10,7 +10,7 @@ class SelectionCard extends Component{
     constructor(props){
         super(props)
         this.state={
-            arrIds:this.props.selectedIds,//a
+            arrIds:this.props.selectedIds,
             cardId:this.props.id,
             isSelected:false,
             hover:false
@@ -22,13 +22,7 @@ class SelectionCard extends Component{
     }
 
     componentDidUpdate(prevProps,prevState) {
-        // Uso tipico (no olvides de comparar los props):
-        if (this.props.selectedIds !== prevProps.selectedIds) { 
-          this.setState({
-            arrIds:this.props.selectedIds
-            });
-        }
- 
+        this.props.selectedIds !== prevProps.selectedIds && this.setState({arrIds:this.props.selectedIds})
     }
 
 
@@ -39,12 +33,12 @@ class SelectionCard extends Component{
     toggleIsSelected= () => {
 
 
-        if(!this.state.arrIds.includes(this.state.cardId)){ //Si NO esta en el array me lo metes y me lopintas
+        if(!this.state.arrIds.includes(this.state.cardId)){
             this.setState({isSelected: true}) 
             this.setSelected(this.props)
-        }else{ // Si esta en el array me lo sacas y no lo pintas
+        }else{
             this.setState({isSelected: false}) 
-            this.removeSelected(this.props.id)//a
+            this.removeSelected(this.props.id)
         }
     }
 
@@ -56,9 +50,9 @@ class SelectionCard extends Component{
                 this.props.minified?(
                     <Col md={6}>
                         <div className="spotcard d-flex" 
-                        onClick={this.toggleIsSelected} // Esto lo hace todo
-                        onMouseEnter={this.toggleHover} //Esto ok
-                        onMouseLeave={this.toggleHover} //Ok
+                        onClick={this.toggleIsSelected}
+                        onMouseEnter={this.toggleHover}
+                        onMouseLeave={this.toggleHover}
                         style={{backgroundColor: this.state.hover ? "#535353" : "inherit"}} >
                         
                             <img src={this.props.album.images[0].url} alt="img track"></img>
@@ -72,9 +66,9 @@ class SelectionCard extends Component{
                 ):(
 
                     <div className="spotcard d-flex" 
-                    onClick={this.toggleIsSelected} // Esto lo hace todo
-                    onMouseEnter={this.toggleHover} //Esto ok
-                    onMouseLeave={this.toggleHover} //Ok
+                    onClick={this.toggleIsSelected}
+                    onMouseEnter={this.toggleHover}
+                    onMouseLeave={this.toggleHover}
                     style={{backgroundColor: this.state.hover || this.state.arrIds.includes(this.state.cardId) ? "#535353" : "inherit"}} >
                         
                         <img src={this.props.album.images[0].url} alt="img track"></img>
@@ -87,8 +81,12 @@ class SelectionCard extends Component{
                 )
                 
 
-            ):( //Esto de artistas NO MIRAR Y COPIAR DESPUES
-                <div className="spotcard d-flex" onClick={this.toggleIsSelected} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} style={{backgroundColor: this.state.isSelected || this.state.hover || this.state.arrIds.includes(this.state.cardId) ? "#535353" : "inherit"}} >
+            ):( 
+                <div className="spotcard d-flex" 
+                onClick={this.toggleIsSelected} 
+                onMouseEnter={this.toggleHover} 
+                onMouseLeave={this.toggleHover} 
+                style={{backgroundColor: this.state.hover || this.state.arrIds.includes(this.state.cardId) ? "#535353" : "inherit"}} >
                     <img className="artistImg" alt ="artist img" src={this.props.images[0]?this.props.images[0].url:"https://www.theatromarrakech.com/wp-content/plugins/urvenue-plugin/images/placeholder.artist.jpg"}></img>
                     <div className="spotcard-body">
                         <h1>{this.props.name}</h1>

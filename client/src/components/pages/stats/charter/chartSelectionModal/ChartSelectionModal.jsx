@@ -15,22 +15,14 @@ class ChartSelectionModal extends Component {
     }
 
     componentDidUpdate(prevProps,prevState) {
-        // Uso tipico (no olvides de comparar los props):
-        if (this.props.selectedTerm !== prevProps.selectedTerm) { 
-          this.setState({
-            selectedTerm:this.props.selectedTerm
-            });
-        }
-
-        if (prevState.selectedChart !== this.state.selectedChart) { 
-            this.setState({
-                selectedChart:this.state.selectedChart
-              });
-          }
+        
+        this.props.selectedTerm !== prevProps.selectedTerm && this.setState({selectedTerm:this.props.selectedTerm})
+        prevState.selectedChart !== this.state.selectedChart && this.setState({selectedChart:this.state.selectedChart});
+          
     }
 
     click = input => {
-        this.setState({ selectedChart: input });
+        this.setState({ selectedChart: input })
     };
 
     reset = () =>{

@@ -17,25 +17,19 @@ class Showcase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playlists:[],  
+      playlists:this.props.playlists,  
       genresmoods:["Pop","Latin","Chill","Hip-Hop","Focus","Rock","Workout","Indie","Party","Tastemakers","Electronic","Dance","Decades","Romance","Sleep","R&B","Folk","Jazz","Reggae","Soul","Gaming","TV & Movies","Wellness","Classical","K-Pop","Punk","Dinner","Metal","Cumbia","Kids & Family","Commute","Trending","Blues","Funk","Country"],
       hideModals:this.props.showbtn,
       selectedGenre:""
     };
     this.playListServices = new PlayListServices();
+    this.getAllPlaylists=this.props.getAllPlaylists
   }
-
-  componentDidMount = () => this.getAllPlaylists()
 
   componentDidUpdate(prevProps) {
     this.props.showbtn !== prevProps.showbtn && this.setState({hideModals:this.props.showbtn})
+    this.props.playlists !== prevProps.playlists && this.setState({playlists:this.props.playlists})
 
-  }
-
-  getAllPlaylists = () => {
-    this.playListServices.getAllPlaylists()
-        .then((allPlaylists) => this.setState({ playlists: allPlaylists }))
-        .catch(err => console.log(err))
   }
 
   click = (elm) =>{

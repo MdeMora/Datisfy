@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 
 import PlayListServices from '../../../services/playlist.services'
 
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+
+import PlaylistCard from '../playlists/playlistCard/PlaylistCard'
+
+import './Profile.css'
+
 class Profile extends Component {
     
     constructor(props) {
@@ -27,7 +34,9 @@ class Profile extends Component {
 
         return(
             !this.state.reload?(
-                <div className="spinner-box">
+
+               <div className="mkFit d-flex justify-content-center align-items-center">
+                     <div className="spinner-box mkAbsolute">
 
                     <div className="blue-orbit leo"></div>
                     <div className="green-orbit leo"></div>
@@ -36,11 +45,19 @@ class Profile extends Component {
                     <div className="white-orbit w2 leo"></div>
                     <div className="white-orbit w3 leo"></div>
 
-                </div>
+                    </div>
+               </div>
             ):(
-                <div>
-                    <h1>Hola :{this.props.loggedInUser.username}</h1>
-                </div>
+                <Container>
+                    <h1 className="mb-5">{this.props.loggedInUser.username}</h1>
+
+                    <h3>My playlists:</h3>
+
+                    <Row>
+                        {this.state.myPlaylists.map(elm => <PlaylistCard key={elm._id} {...elm} {...this.props}/>)}
+                    </Row>
+
+                </Container>
             )
         )
     }

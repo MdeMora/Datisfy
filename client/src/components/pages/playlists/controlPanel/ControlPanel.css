@@ -1,5 +1,3 @@
-
-
 .controlPanel h1{
     font-size: 1em;
 }
@@ -19,5 +17,7 @@
     font-size: 0.8em;
 }
 
-.createBtn:hover{color:#1db954}
+.createBtn:hover{
+    color:#1db954;
+}
 

@@ -14,12 +14,7 @@ class SelectionPanel extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        // Uso tipico (no olvides de comparar los props):
-        if (this.props.selectionItems !== prevProps.selectionItems) { 
-          this.setState({
-            selectionItems:this.props.selectionItems
-            });
-        }
+        this.props.selectionItems !== prevProps.selectionItems && this.setState({selectionItems:this.props.selectionItems});
     }
 
 

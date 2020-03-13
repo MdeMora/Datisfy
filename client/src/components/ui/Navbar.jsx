@@ -19,15 +19,12 @@ class Navigation extends Component {
 
     logout = () => {
         this.authServices.logout()
-            .then(response => {
-                this.props.setTheUser(false)
-            })
+            .then(response => this.props.setTheUser(false))
             .catch(err => console.log(err))
     }
 
 
     render() {
-        console.log("--Navbar 198",this.props)
         const greeting = this.props.loggedInUser ? <>{this.props.loggedInUser.username}</> : <>Invitad@</>
 
 
