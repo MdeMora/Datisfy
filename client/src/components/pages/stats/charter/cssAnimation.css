@@ -1,4 +1,4 @@
-/* KEYFRAMES */
+/* KEYFRAMES
 
 @keyframes spin {
     from {
@@ -65,7 +65,7 @@
     }
   }
   
-  /* GRID STYLING */
+  /* GRID STYLING 
   
   .spinner-box {
     width: 400px;
@@ -130,4 +130,4 @@
   
   .w3 {
     transform: rotate3D(.5, 1, 2, 90deg);
-  }
+  } */
